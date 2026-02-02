@@ -8,7 +8,5 @@ import {Stock} from '../../model/stock';
   styleUrl: './stock-item.css',
 })
 export class StockItem {
-  stock: Stock = new Stock("HDPE", "HDPE là ngon luôn", 100, 80);
   constructor() {}
-  ngOnInit() {}
 }
