@@ -1,1 +1,19 @@
-<p>stock-item works!</p>
+<div class="stock-item-container">
+    <h2 class="stock-title">{{stock.name}}</h2>
+    <h3 class="stock-code">({{stock.code}})</h3>
+    <span class="stock-start-container"
+        [class.vebo] = "stock.isIncrease()"
+        [class.xabo] = "!stock.isIncrease()"
+    >
+        <h3 class="stock-price">${{stock.price}}</h3>
+        <span class="stock-detail-container">
+            <i class="bi"
+                [class.bi-caret-up-fill] = "stock.isIncrease()"
+                [class.bi-caret-down-fill] = "!stock.isIncrease()"
+            ></i>
+            <label for="" class="stock-change">({{stock.chenhLech()}}$)</label>
+        </span>
+        
+    </span>
+    <button>Add to favourite</button>
+</div>

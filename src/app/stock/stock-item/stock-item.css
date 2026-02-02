@@ -1,0 +1,29 @@
+.stock-item-container{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: white;
+    width: 400px;
+}
+.stock-price{
+    font-size: 2.5rem;
+    margin: 10px 15px;
+}
+.stock-title{
+    font-size: 30px;
+    font-weight: bold;
+}
+.stock-start-container
+{
+    display: flex;
+    align-items: center;
+}
+.vebo{
+    color: green;
+}
+.xabo{
+    color: red;
+}
+.stock-code{
+    color: gray;
+
+    font-size: 20px;
+}

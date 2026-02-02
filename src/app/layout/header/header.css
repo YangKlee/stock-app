@@ -1,0 +1,103 @@
+/* ===== HEADER ===== */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 24px;
+    height: 64px;
+
+    background: #2b2b2b; /* xám đen */
+    color: #fff;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    font-family: "Segoe UI", sans-serif;
+}
+.header-left{
+    display: flex;
+    align-items: center;
+    gap: 20px;;
+}
+/* ===== LOGO ===== */
+.header-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-logo {
+    height: 36px;
+}
+
+.header-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* ===== NAV ===== */
+.header-nav-container ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+}
+
+.header-nav-container a {
+    text-decoration: none;
+    color: #ddd;
+
+    position: relative;
+    transition: all 0.25s ease;
+}
+
+/* hover sáng lên */
+.header-nav-container a:hover {
+    color: #fff;
+}
+
+/* hiệu ứng gạch chân trượt */
+.header-nav-container a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+
+    width: 0;
+    height: 2px;
+    background: #4cafef;
+
+    transition: width 0.25s ease;
+}
+
+.header-nav-container a:hover::after {
+    width: 100%;
+}
+
+/* ===== BUTTON ===== */
+.header-function-button {
+    background: #4cafef;
+    color: white;
+
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+
+    cursor: pointer;
+    font-weight: 600;
+
+    transition: all 0.2s ease;
+}
+
+/* hover nổi lên */
+.header-function-button:hover {
+    background: #6cc6ff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+}
+
+/* click cảm giác bấm thật */
+.header-function-button:active {
+    transform: translateY(0);
+}
