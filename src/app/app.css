@@ -1,5 +1,9 @@
 .main
 {
+    /* create a new formatting context so child margins don't collapse into .main */
+    display: flow-root;
 
     background-color: white;
+    min-height: 100vh;
+    min-width: 100vw;
 }

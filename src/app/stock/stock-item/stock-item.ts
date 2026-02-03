@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {Stock} from '../../model/stock';
 @Component({
   selector: 'app-stock-item',
@@ -9,4 +9,5 @@ import {Stock} from '../../model/stock';
 })
 export class StockItem {
   constructor() {}
+  @Input() stock!: Stock;
 }

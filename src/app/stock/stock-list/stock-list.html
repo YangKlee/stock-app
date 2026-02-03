@@ -1,5 +1,6 @@
 <div class="stock-list-container">
     <app-stock-item 
         *ngFor="let stock of stockList"
+        [stock]="stock"
     ></app-stock-item>
 </div>
