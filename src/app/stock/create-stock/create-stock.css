@@ -1,0 +1,21 @@
+:root
+{
+    --accepted: green;
+    --rejected: red;
+}
+.create-stock-container{
+    border: 1px solid rgba(0, 0, 0, 0.5 );
+    padding: 10px;
+    border-radius: 10px;
+
+    background-color: white;
+    width: 400px;
+    margin-top: 20px;
+}
+.hop-le{
+    background-color: rgba(120, 255, 120, 0.3);
+
+}
+.khong-hop-le{
+    background-color: rgba(255, 120, 120, 0.3);
+}

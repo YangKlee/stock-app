@@ -1,0 +1,22 @@
+<div class="create-stock-container">
+    <h1 class="title-form">Create Stock</h1>
+    <form action="">
+        <div class="input-warpper stock-name-input">
+            <label for="stock-name" class="label-input">Stock Name</label>
+            <input type="text" id="stock-name" class="stock-input" name="stockName" [(ngModel)]="stockName" (ngModelChange)="updateNameStockClass()" [ngClass]="stockInputNameClass" placeholder="Enter stock name..." >
+        </div>
+        <div class="input-warpper stock-code-input">
+            <label for="stock-code" class="label-input">Stock Code</label>
+            <input type="text" id="stock-code"  class="stock-input" name="stockCode" [(ngModel)]="stockCode" (ngModelChange)="updateCodeStockClass()" [ngClass]="stockInputCodeClass"  (blur)="updateOldCodeValue()" placeholder="Enter stock code..." >
+        </div>
+        <div class="input-warpper stock-price-input">
+            <label for="stock-price" class="label-input">Stock Price</label>
+            <input type="text" id="stock-price" class="stock-input" name="stockPrice" [(ngModel)]="stockPrice" (blur)="leavePriceInput()" [ngClass]="stockInputPriceClass" placeholder="Enter stock price..." >
+        </div>
+        <div class="input-warpper stock-previous-price-input">
+            <label for="stock-previous-price" class="label-input">Stock Previous Price</label>
+            <input type="text" id="stock-previous-price" class="stock-input" [(ngModel)]="stockPreviousPrice" name="stockPreviousPrice" placeholder="Enter stock previous price..." >
+        </div>
+        <input type="button" value="Create Stock" (click)="createStock()" class="btn-submit-stock">
+    </form>
+</div>
