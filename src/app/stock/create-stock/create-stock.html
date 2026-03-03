@@ -1,12 +1,6 @@
-<div class="list-stock-container">
-    <app-stock-item 
-        *ngFor="let stock of stockList"
-        [stock]="stock"
-    ></app-stock-item>
-</div>
 <div class="create-stock-container">
     <h1 class="title-form">Create Stock</h1>
-    <form action="" #createStockForm="ngForm">
+    <form action="">
         <div class="input-warpper stock-name-input">
             <label for="stock-name" class="label-input">Stock Name</label>
             <input type="text" id="stock-name" class="stock-input" name="stockName" [(ngModel)]="stockName" (ngModelChange)="updateNameStockClass()" [ngClass]="stockInputNameClass" placeholder="Enter stock name..." >
@@ -23,10 +17,6 @@
             <label for="stock-previous-price" class="label-input">Stock Previous Price</label>
             <input type="text" id="stock-previous-price" class="stock-input" [(ngModel)]="stockPreviousPrice" name="stockPreviousPrice" placeholder="Enter stock previous price..." >
         </div>
-        <input type="checkbox" id="confirm-checkbox" [(ngModel)]="stockInfoConfim" name="stockInfoConfim">
-        <label for="confirm-checkbox">I confirm all information is correct</label>
-        <input [disabled]="!stockInfoConfim" type="button" (click)="createStock()" value="Create Stock" class="btn-submit-stock">
+        <input type="button" value="Create Stock" (click)="createStock()" class="btn-submit-stock">
     </form>
 </div>
-<p> createStockForm: {{ createStockForm.value | json }}</p>
-<p>Data has been confirmed : {{stockInfoConfim}}</p>

@@ -12,11 +12,6 @@
     width: 400px;
     margin-top: 20px;
 }
-.list-stock-container
-{
-    display: flex;
-    gap: 10px;
-}
 .hop-le{
     background-color: rgba(120, 255, 120, 0.3);
 

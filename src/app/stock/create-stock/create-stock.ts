@@ -1,12 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { StockList } from '../stock-list/stock-list';
-import { StockItem } from '../stock-item/stock-item';
-import { Stock } from '../../model/stock';
+
 @Component({
   selector: 'app-create-stock',
-  imports: [CommonModule, FormsModule, StockItem],
+  imports: [CommonModule, FormsModule, StockList],
   standalone: true,
   templateUrl: './create-stock.html',
   styleUrls: ["create-stock.css"],
@@ -18,18 +17,12 @@ export class CreateStock implements OnInit {
   stockPrice: number = 0;
   stockPreviousPrice: number = 0;
   stockPriceTouched: boolean = false;
-  stockInfoConfim: boolean = false;
   public stockInputNameClass: any;
   public stockInputCodeClass: any;
   public stockInputPriceClass: any;
   public stockInputPreviousPriceClass: any;
-  public stockList: Array<Stock> = [];
-
-
   constructor() {
-      this.stockList.push(new Stock("HDPE là ngon luôn", "HDPE", 100, 80));
-    this.stockList.push(new Stock("Alo Vũ à Vũ?", "Tày  ", 150, 120));
-    this.stockList.push(new Stock("Thanh Hóa", "3652", 36, 369));  
+    
   }
   ngOnInit(): void {
     this.stockInputPriceClass = {
@@ -58,8 +51,5 @@ export class CreateStock implements OnInit {
     this.stockInputPriceClass = {
       "khong-hop-le"  : true
     }
-  }
-  createStock(): void {
-    this.stockList.push(new Stock(this.stockName, this.stockCode, this.stockPrice, this.stockPreviousPrice)); 
   }
 }
