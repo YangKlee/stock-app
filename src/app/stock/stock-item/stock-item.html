@@ -1,4 +1,5 @@
-<div class="stock-item-container">
+
+    <div *ngIf="stock" class="stock-item-container">
     <h2 class="stock-title">{{stock.name}}</h2>
     <h3 class="stock-code">({{stock.code}})</h3>
     <span class="stock-start-container"
@@ -15,5 +16,5 @@
         </span>
         
     </span>
-    <button>Add to favourite</button>
+    <button (click)="addFavourite() " [disabled]="stock.favourite">Add to favourite</button>
 </div>
