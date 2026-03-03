@@ -1,22 +1,36 @@
-<div class="create-stock-container">
+<div class="quick-btn" style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
+    <button type="button" class="btn btn-primary"  (click)="isFormOpen = true">Add stock</button>
+</div>
+<div class="overlay" *ngIf="isFormOpen">
+
+</div>
+<div class="create-stock-container" *ngIf="isFormOpen">
     <h1 class="title-form">Create Stock</h1>
-    <form action="">
+    <form action="" #createStockForm="ngForm" class="form-warpper">
         <div class="input-warpper stock-name-input">
             <label for="stock-name" class="label-input">Stock Name</label>
-            <input type="text" id="stock-name" class="stock-input" name="stockName" [(ngModel)]="stockName" (ngModelChange)="updateNameStockClass()" [ngClass]="stockInputNameClass" placeholder="Enter stock name..." >
+            <input type="text" id="stock-name" required minlength="6" maxlength="20" class="stock-input stock-name" name="stockName" [(ngModel)]="newStock.name"  placeholder="Enter stock name..." >
         </div>
         <div class="input-warpper stock-code-input">
             <label for="stock-code" class="label-input">Stock Code</label>
-            <input type="text" id="stock-code"  class="stock-input" name="stockCode" [(ngModel)]="stockCode" (ngModelChange)="updateCodeStockClass()" [ngClass]="stockInputCodeClass"  (blur)="updateOldCodeValue()" placeholder="Enter stock code..." >
+            <input type="text" id="stock-code"  class="stock-input stock-code" name="stockCode" [(ngModel)]="newStock.code" placeholder="Enter stock code..." >
         </div>
         <div class="input-warpper stock-price-input">
             <label for="stock-price" class="label-input">Stock Price</label>
-            <input type="text" id="stock-price" class="stock-input" name="stockPrice" [(ngModel)]="stockPrice" (blur)="leavePriceInput()" [ngClass]="stockInputPriceClass" placeholder="Enter stock price..." >
+            <input type="number" id="stock-price" class="stock-input stock-price" name="stockPrice" [(ngModel)]="newStock.price" placeholder="Enter stock price..." >
         </div>
         <div class="input-warpper stock-previous-price-input">
             <label for="stock-previous-price" class="label-input">Stock Previous Price</label>
-            <input type="text" id="stock-previous-price" class="stock-input" [(ngModel)]="stockPreviousPrice" name="stockPreviousPrice" placeholder="Enter stock previous price..." >
+            <input type="number" id="stock-previous-price" class="stock-input stock-price" [(ngModel)]="newStock.previousPrice" name="stockPreviousPrice" placeholder="Enter stock previous price..." >
         </div>
-        <input type="button" value="Create Stock" (click)="createStock()" class="btn-submit-stock">
+        <div class="checkbox-warpper" style="display: flex; gap: 10px;">
+            <input type="checkbox" id="stock-is-favorite" class="checkbox-input stock-is-favorite" name="stockIsFavorite" [(ngModel)]="isConfim">
+            <label for="stock-is-favorite" class="label-checkbox">I confim that the infomation provided above is accurate!</label>
+        </div>
+        <div class="button-form-warper">
+        <input type="button" class="btn btn-success" [disabled]="!isConfim" value="Create Stock" >
+        <button class="btn btn-danger" (click)="isFormOpen=false" >Close</button>
+        </div>
     </form>
+    {{ newStock | json }}
 </div>
