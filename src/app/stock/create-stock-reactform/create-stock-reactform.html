@@ -1,0 +1,36 @@
+<div class="quick-btn" style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
+    <button type="button" class="btn btn-primary"  (click)="isFormOpen = true">Add stock</button>
+</div>
+<div class="overlay" *ngIf="isFormOpen">
+
+</div>
+<div class="create-stock-container" *ngIf="isFormOpen">
+    <h1 class="title-form">Create Stock</h1>
+    <form  class="form-warpper">
+        <div class="input-warpper stock-name-input">
+            <label for="stock-name" class="label-input">Stock Name</label>
+            <input type="text" id="stock-name" class="stock-input stock-name" name="stockName" placeholder="Enter stock name..." >
+        </div>
+        <div class="input-warpper stock-code-input">
+            <label for="stock-code" class="label-input">Stock Code</label>
+            <input type="text" id="stock-code" class="stock-input stock-code" name="stockCode" placeholder="Enter stock code..." >
+        </div>
+        <div class="input-warpper stock-price-input">
+            <label for="stock-price" class="label-input">Stock Price</label>
+            <input type="number" id="stock-price" class="stock-input stock-price" name="stockPrice" placeholder="Enter stock price..." >
+        </div>
+        <div class="input-warpper stock-previous-price-input">
+            <label for="stock-previous-price" class="label-input">Stock Previous Price</label>
+            <input type="number" id="stock-previous-price" class="stock-input stock-price"  name="stockPreviousPrice" placeholder="Enter stock previous price..." >
+        </div>
+        <div class="checkbox-warpper" style="display: flex; gap: 10px;">
+            <input type="checkbox" id="stock-is-favorite" class="checkbox-input stock-is-favorite" name="stockIsFavorite">
+            <label for="stock-is-favorite" class="label-checkbox">I confim that the infomation provided above is accurate!</label>
+        </div>
+        <div class="button-form-warper">
+        <input type="button" class="btn btn-success" [disabled]="!isConfim" value="Create Stock" >
+        <button class="btn btn-danger" (click)="isFormOpen=false" >Close</button>
+        </div>
+    </form>
+
+</div>
