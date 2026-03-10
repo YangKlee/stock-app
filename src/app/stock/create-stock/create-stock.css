@@ -9,6 +9,10 @@
     z-index: 2;
     width: 600px;
 }
+.title-form
+{
+    font-size: 1.6rem;
+}
 .form-warpper
 {
     width: 100%;

@@ -12,7 +12,7 @@ export class StockList {
   @Input() public stockList: Array<Stock> = [];
   constructor() {
     this.stockList.push(new Stock("HDPE là ngon luôn", "HDPE", 100, 80));
-    this.stockList.push(new Stock("Alo Vũ à Vũ?", "Tày  ", 150, 120));
+    this.stockList.push(new Stock("Khô gà", "MIXI", 150, 120));
     this.stockList.push(new Stock("Thanh Hóa", "3652", 36, 369));
   }
 }

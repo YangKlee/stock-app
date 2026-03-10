@@ -8,7 +8,7 @@ import {CreateStockReactform} from "./stock/create-stock-reactform/create-stock-
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, Header, Footer, StockList,  CreateStockReactform],
+  imports: [RouterOutlet, Header, Footer, StockList, CreateStock, CreateStockReactform],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

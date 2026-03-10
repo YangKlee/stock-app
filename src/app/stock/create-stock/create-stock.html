@@ -5,23 +5,23 @@
 
 </div>
 <div class="create-stock-container" *ngIf="isFormOpen">
-    <h1 class="title-form">Create Stock</h1>
+    <h1 class="title-form">Create Stock (Ngform)</h1>
     <form action="" #createStockForm="ngForm" class="form-warpper">
         <div class="input-warpper stock-name-input">
             <label for="stock-name" class="label-input">Stock Name</label>
-            <input type="text" id="stock-name" required minlength="6" maxlength="20" class="stock-input stock-name" name="stockName" [(ngModel)]="newStock.name"  placeholder="Enter stock name..." >
+            <input type="text" required minlength="6" maxlength="20" class="stock-input stock-name" [(ngModel)]="newStock.name"  placeholder="Enter stock name..." >
         </div>
         <div class="input-warpper stock-code-input">
             <label for="stock-code" class="label-input">Stock Code</label>
-            <input type="text" id="stock-code"  class="stock-input stock-code" name="stockCode" [(ngModel)]="newStock.code" placeholder="Enter stock code..." >
+            <input type="text"  class="stock-input stock-code" [(ngModel)]="newStock.code" placeholder="Enter stock code..." >
         </div>
         <div class="input-warpper stock-price-input">
             <label for="stock-price" class="label-input">Stock Price</label>
-            <input type="number" id="stock-price" class="stock-input stock-price" name="stockPrice" [(ngModel)]="newStock.price" placeholder="Enter stock price..." >
+            <input type="number" id="stock-price" class="stock-input stock-price" [(ngModel)]="newStock.price" placeholder="Enter stock price..." >
         </div>
         <div class="input-warpper stock-previous-price-input">
             <label for="stock-previous-price" class="label-input">Stock Previous Price</label>
-            <input type="number" id="stock-previous-price" class="stock-input stock-price" [(ngModel)]="newStock.previousPrice" name="stockPreviousPrice" placeholder="Enter stock previous price..." >
+            <input type="number" class="stock-input stock-price" [(ngModel)]="newStock.previousPrice" name="stockPreviousPrice" placeholder="Enter stock previous price..." >
         </div>
         <div class="checkbox-warpper" style="display: flex; gap: 10px;">
             <input type="checkbox" id="stock-is-favorite" class="checkbox-input stock-is-favorite" name="stockIsFavorite" [(ngModel)]="isConfim">

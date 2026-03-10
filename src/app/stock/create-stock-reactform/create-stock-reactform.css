@@ -73,3 +73,10 @@ padding: 30px;
 {
     background-color: rgba(255, 0, 0, 0.2);
 }
+.error-exception
+{
+    color: red;
+}
+.title-form{
+    font-size: 1.8rem;
+}
