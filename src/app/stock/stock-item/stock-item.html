@@ -15,5 +15,5 @@
         </span>
         
     </span>
-    <button>Add to favourite</button>
+    <button (click)="addFavorite(stock)" [disabled]="stock.favourite">Add to favourite</button>
 </div>

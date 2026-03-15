@@ -11,7 +11,7 @@ import { Stock } from '../../model/stock';
   styleUrls: ["create-stock.css"],
 })
 export class CreateStock implements OnInit {
-  newStock: Stock = new Stock("", "", 0, 0);
+  newStock: Stock = new Stock("", "", 0, 0, false);
   isConfim: boolean = false;
   isFormOpen: boolean = false;
   constructor() {

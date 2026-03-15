@@ -1,14 +1,15 @@
 export class Stock {
     favourite: boolean = false;
-    public name: string = "";
-    public code: string = "";
-    public price: number = 0;
-    public previousPrice: number = 0;
-    constructor(name: string, code: string, price: number, previousPrice: number) {
-        this.name = name;
-        this.code = code;
-        this.price = price;
-        this.previousPrice = previousPrice;
+    // public name: string = "";
+    // public code: string = "";
+    // public price: number = 0;
+    // public previousPrice: number = 0;
+    constructor(public name: string, 
+        public code: string, 
+        public price: number, 
+        public previousPrice: number,
+        public isFavourite: boolean) {
+
     }
     isIncrease(): boolean
     {

@@ -1,6 +1,8 @@
 <div class="stock-list-container">
+    <!-- Truyền stockElement từ componet cha sang componet stock items -->
     <app-stock-item 
-        *ngFor="let stock of stockList"
-        [stock]="stock"
+        *ngFor="let stockElement of stockList"
+        
+        [stock]="stockElement"
     ></app-stock-item>
 </div>

@@ -9,5 +9,11 @@ import {Stock} from '../../model/stock';
 })
 export class StockItem {
   constructor() {}
+  // nhận stock từ cha là stockList, property đó là có thể được bind từ bên ngoài
+  // ! chắc chắn rằng nó không null
   @Input() stock!: Stock;
+  addFavorite(stock: Stock)
+  {
+    this.stock.favourite = true;
+  }
 }

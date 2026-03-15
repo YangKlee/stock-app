@@ -15,7 +15,7 @@
         </div>
         <div class="input-warpper stock-code-input">
             <label for="stock-code" class="label-input">Stock Code</label>
-            <input type="text" id="stock-code" formControlName="stockCode" class="stock-input stock-code" name="stockCode" placeholder="Enter stock code..." >
+            <input type="text" id="stock-code" formControlName="stockCode" class="stock-input stock-code"  placeholder="Enter stock code..." >
             <span class="error-exception" *ngIf="createStockForm.get('stockCode')?.invalid && createStockForm.get('stockCode')?.dirty" >StockCode không hợp lệ </span>
         </div>
         <div class="input-warpper stock-price-input">
@@ -26,13 +26,13 @@
         </div>
         <div class="input-warpper stock-previous-price-input">
             <label for="stock-previous-price" class="label-input">Stock Previous Price</label>
-            <input type="number" id="stock-previous-price" formControlName="stockLastPrice" class="stock-input stock-price"  name="stockPreviousPrice" 
+            <input type="number" formControlName="stockLastPrice" class="stock-input stock-price" name="stockPreviousPrice" 
             placeholder="Enter stock previous price..." >
         <span for="" class="error-exception" *ngIf="createStockForm.get('stockLastPrice')?.invalid && createStockForm.get('stockLastPrice')?.dirty
              " >Stock Last Price không hợp lệ </span>
         </div>
         <div class="checkbox-warpper" style="display: flex; gap: 10px;">
-            <input type="checkbox" formControlName="isConfimmed" id="stock-is-favorite" class="checkbox-input stock-is-favorite" name="stockIsFavorite">
+            <input type="checkbox" formControlName="isConfimmed"  class="checkbox-input stock-is-favorite" name="stockIsFavorite">
             <label for="stock-is-favorite"  class="label-checkbox">I confim that the infomation provided above is accurate!</label>
         </div>
         <div class="button-form-warper">
