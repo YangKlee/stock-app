@@ -5,6 +5,7 @@ import { Stock } from '../model/stock';
 })
 export class StockService {
   public stockList: Array<Stock> = [];
+
   constructor()
   {
     this.stockList = [

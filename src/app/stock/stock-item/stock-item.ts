@@ -1,14 +1,16 @@
 import { Component, Input } from '@angular/core';
 import {Stock} from '../../model/stock';
 import { StockService } from '../../services/stock-service';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-stock-item',
-  imports: [],
+  imports: [CommonModule],
   standalone: true,
   templateUrl: './stock-item.html',
   styleUrl: './stock-item.css',
 })
 export class StockItem {
+
   constructor(private StockServices: StockService) {}
   // nhận stock từ cha là stockList, property đó là có thể được bind từ bên ngoài
   // ! chắc chắn rằng nó không null
