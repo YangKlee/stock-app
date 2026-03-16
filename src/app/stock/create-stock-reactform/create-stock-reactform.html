@@ -28,8 +28,16 @@
             <label for="stock-previous-price" class="label-input">Stock Previous Price</label>
             <input type="number" formControlName="stockLastPrice" class="stock-input stock-price" name="stockPreviousPrice" 
             placeholder="Enter stock previous price..." >
-        <span for="" class="error-exception" *ngIf="createStockForm.get('stockLastPrice')?.invalid && createStockForm.get('stockLastPrice')?.dirty
+            <span for="" class="error-exception" *ngIf="createStockForm.get('stockLastPrice')?.invalid && createStockForm.get('stockLastPrice')?.dirty
              " >Stock Last Price không hợp lệ </span>
+        </div>
+        <div class="input-warpper stock-exchange">
+            <label for="">Stock Exchange:</label>
+            <select formControlName="stockExchange">
+                <option value="VNINDEX" selected>VNINDEX</option>
+                <option value="NSE">NSE</option>
+                <option value="NYSE">NYSE</option>
+            </select>
         </div>
         <div class="checkbox-warpper" style="display: flex; gap: 10px;">
             <input type="checkbox" formControlName="isConfimmed"  class="checkbox-input stock-is-favorite" name="stockIsFavorite">
