@@ -14,6 +14,9 @@ export class StockItem {
   @Input() stock!: Stock;
   addFavorite(stock: Stock)
   {
-    this.stock.favourite = true;
+      if(stock.favourite)
+        stock.favourite = false;
+      else
+        stock.favourite = true;
   }
 }
