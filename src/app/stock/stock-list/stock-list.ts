@@ -2,9 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common'; 
 import { Stock } from '../../model/stock';
 import { StockItem } from '../stock-item/stock-item';
+import { CreateStockReactform } from '../create-stock-reactform/create-stock-reactform';
 @Component({
   selector: 'app-stock-list',
-  imports: [CommonModule, StockItem],
+  imports: [CommonModule, StockItem, CreateStockReactform],
   templateUrl: './stock-list.html',
   styleUrls: ['./stock-list.css'],
 })  

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { BlobOptions } from 'node:buffer';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -16,7 +16,7 @@ import { json } from 'node:stream/consumers';
 })
 export class CreateStockReactform implements OnInit{
   isFormOpen: boolean = false;
-
+  @Input() stockList!: Array<Stock>;
   createStockForm!: FormGroup;
 
   constructor(private frmBuilder : FormBuilder)
@@ -49,6 +49,8 @@ export class CreateStockReactform implements OnInit{
       newStock.code = this.createStockForm.value.stockCode;
       newStock.price = this.createStockForm.value.stockPrice;
       newStock.previousPrice = this.createStockForm.value.stockLastPrice;
+
+      this.stockList.push(newStock);
       alert("Tạo stock thành công!");
       
     }
