@@ -5,7 +5,7 @@ import { StockList } from '../stock-list/stock-list';
 import { Stock } from '../../model/stock';
 @Component({
   selector: 'app-create-stock',
-  imports: [CommonModule, FormsModule, StockList ],
+  imports: [CommonModule, FormsModule ],
   standalone: true,
   templateUrl: './create-stock.html',
   styleUrls: ["create-stock.css"],
