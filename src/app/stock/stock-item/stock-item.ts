@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import {Stock} from '../../model/stock';
+import { StockService } from '../../services/stock-service';
 @Component({
   selector: 'app-stock-item',
   imports: [],
@@ -8,12 +9,22 @@ import {Stock} from '../../model/stock';
   styleUrl: './stock-item.css',
 })
 export class StockItem {
-  constructor() {}
+  constructor(private StockServices: StockService) {}
   // nhận stock từ cha là stockList, property đó là có thể được bind từ bên ngoài
   // ! chắc chắn rằng nó không null
   @Input() stock!: Stock;
   addFavorite(stock: Stock)
   {
-    this.stock.favourite = true;
+    if(stock.favourite == true)
+      stock.favourite = false;
+    else
+      stock.favourite = true;
+  }
+  deleteStock(stock: Stock)
+  {
+    if(this.StockServices.deleteStock(stock.code))
+      alert("Xóa stock thành công");
+    else
+      alert("Xóa stock không thành công");
   }
 }
