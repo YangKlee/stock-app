@@ -29,4 +29,8 @@ export class StockItem {
     else
       alert("Xóa stock không thành công");
   }
+  viewDetial(stock: Stock)
+  {
+
+  }
 }

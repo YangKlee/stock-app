@@ -10,6 +10,7 @@ import { StockService } from '../../services/stock-service';
   styleUrls: ['./stock-list.css'],
 })  
 export class StockList implements OnInit {
+  isShowDetialDialog :Boolean = false;
   public stockList: Array<Stock> = [];
   constructor(private stockServices:StockService) {
 

@@ -1,8 +1,8 @@
-<div class="overlay" *ngIf="stockServices.isViewDetial"></div>
+<div class="overlay" *ngIf="isShowDetialDialog"></div>
 
-<div *ngIf="stockServices.isViewDetial" class="view-detial-container">
+<div *ngIf="isShowDetialDialog" class="view-detial-container">
     <h1>Chi tiết Stock</h1>
-    <button (click)="closeDetialDialog()" class="btn-close"><i class="bi bi-x"></i></button>
+    <button (click)="!isShowDetialDialog" class="btn-close"><i class="bi bi-x"></i></button>
     <table  class="table">
         <tbody>
         <tr >
