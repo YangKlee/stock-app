@@ -18,6 +18,7 @@ export class StockList implements OnInit{
     this.stockList.push(new Stock("HDPE là ngon luôn", "HDPE", 100, 80, false));
     this.stockList.push(new Stock("Khô gà", "MIXI", 150, 120, false));
     this.stockList.push(new Stock("Thanh Hóa", "3652", 36, 369, false));
+    this.stockList.push(new Stock("SJC", "SJC", 336, 369, false));
   }
 
   
