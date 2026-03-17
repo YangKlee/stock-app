@@ -70,6 +70,7 @@ export class CreateStockReactform implements OnInit, AfterViewInit{
       if(!this.checkTrungLap(newStock.code))
       {
         this.child.stockList.push(newStock);
+        this.isFormOpen = false;
         alert("Tạo stock thành công!");
       }
       else
