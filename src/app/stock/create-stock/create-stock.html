@@ -5,32 +5,59 @@
 
 </div>
 <div class="create-stock-container" *ngIf="isFormOpen">
-    <h1 class="title-form">Create Stock (Ngform)</h1>
-    <form action="" #createStockForm="ngForm" class="form-warpper">
+    <h1 class="title-form">Create Stock (Template form)</h1>
+    <form action="" #createStockForm="ngForm" class="form-warpper" (ngSubmit)="createNewStock()">
         <div class="input-warpper stock-name-input">
             <label for="stock-name" class="label-input">Stock Name</label>
-            <input type="text" required minlength="6" maxlength="20" class="stock-input stock-name" [(ngModel)]="newStock.name"  placeholder="Enter stock name..." >
+            <input type="text" name="stockName" #stockName="ngModel" required minlength="6" maxlength="20" class="stock-input stock-name" [(ngModel)]="newStock.name"  placeholder="Enter stock name..." >
+            <span style="color: red;"
+                *ngIf="stockName.invalid && stockName.touched"  
+            >Stock name không hợp lệ</span>
         </div>
         <div class="input-warpper stock-code-input">
             <label for="stock-code" class="label-input">Stock Code</label>
-            <input type="text"  class="stock-input stock-code" [(ngModel)]="newStock.code" placeholder="Enter stock code..." >
+            <input type="text"  name="stockCode" #stockCode="ngModel" minlength="3" 
+            maxlength="6"  class="stock-input stock-code" [(ngModel)]="newStock.code"
+             placeholder="Enter stock code..." >
+            <span style="color: red;"
+                *ngIf="stockCode.invalid && stockCode.touched"  
+            >Stock code không hợp lệ</span>
         </div>
         <div class="input-warpper stock-price-input">
             <label for="stock-price" class="label-input">Stock Price</label>
-            <input type="number" id="stock-price" class="stock-input stock-price" [(ngModel)]="newStock.price" placeholder="Enter stock price..." >
+            <input type="number" name="stockPrice"  id="stock-price" 
+            min="0"
+            required
+            class="stock-input stock-price" 
+            #stockPrice = "ngModel"
+            [(ngModel)]="newStock.price" placeholder="Enter stock price..." >
+            <span style="color: red;"
+                *ngIf="stockPrice.invalid && stockPrice.touched"  
+            >Stock price không hợp lệ</span>
         </div>
         <div class="input-warpper stock-previous-price-input">
             <label for="stock-previous-price" class="label-input">Stock Previous Price</label>
-            <input type="number" class="stock-input stock-price" [(ngModel)]="newStock.previousPrice" name="stockPreviousPrice" placeholder="Enter stock previous price..." >
+
+            <input type="number" name="stockPrevPrice" 
+            min="0"
+            class="stock-input stock-price" 
+            [(ngModel)]="newStock.previousPrice"
+            required name="stockPreviousPrice" 
+            #stockPrevPrice="ngModel"
+            placeholder="Enter stock previous price..." >
+
+            <span style="color: red;"
+                *ngIf="stockPrevPrice.invalid && stockPrevPrice.touched"  
+            >Stock previous price không hợp lệ</span>
         </div>
         <div class="checkbox-warpper" style="display: flex; gap: 10px;">
-            <input type="checkbox" id="stock-is-favorite" class="checkbox-input stock-is-favorite" name="stockIsFavorite" [(ngModel)]="isConfim">
+            <input type="checkbox" name="stockConfim" class="checkbox-input stock-is-favorite" name="stockIsFavorite" [(ngModel)]="isConfim">
             <label for="stock-is-favorite" class="label-checkbox">I confim that the infomation provided above is accurate!</label>
         </div>
         <div class="button-form-warper">
-        <input type="button" class="btn btn-success" [disabled]="!isConfim" value="Create Stock" >
-        <button class="btn btn-danger" (click)="isFormOpen=false" >Close</button>
+        <input type="submit" class="btn btn-success" [disabled]="!isConfim || createStockForm.invalid" value="Create Stock" >
+        <button type="button" class="btn btn-danger" (click)="isFormOpen=false" >Close</button>
         </div>
     </form>
-    {{ newStock | json }}
+    <!-- {{ newStock | json }} -->
 </div>

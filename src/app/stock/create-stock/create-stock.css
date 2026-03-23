@@ -77,3 +77,6 @@ padding: 30px;
 {
     background-color: rgba(255, 0, 0, 0.2);
 }
+.stock-input.ng-invalid{
+    border-color: red;
+}
