@@ -9,7 +9,11 @@
     <form action="" #createStockForm="ngForm" class="form-warpper" (ngSubmit)="createNewStock()">
         <div class="input-warpper stock-name-input">
             <label for="stock-name" class="label-input">Stock Name</label>
-            <input type="text" name="stockName" #stockName="ngModel" required minlength="6" maxlength="20" class="stock-input stock-name" [(ngModel)]="newStock.name"  placeholder="Enter stock name..." >
+            <input type="text" name="stockName" #stockName="ngModel" 
+            required minlength="6" maxlength="20" 
+            class="stock-input stock-name" 
+            [(ngModel)]="newStock.name"  
+            placeholder="Enter stock name..." >
             <span style="color: red;"
                 *ngIf="stockName.invalid && stockName.touched"  
             >Stock name không hợp lệ</span>
@@ -36,7 +40,8 @@
             >Stock price không hợp lệ</span>
         </div>
         <div class="input-warpper stock-previous-price-input">
-            <label for="stock-previous-price" class="label-input">Stock Previous Price</label>
+            <label for="stock-previous-price" 
+            class="label-input">Stock Previous Price</label>
 
             <input type="number" name="stockPrevPrice" 
             min="0"
@@ -51,13 +56,20 @@
             >Stock previous price không hợp lệ</span>
         </div>
         <div class="checkbox-warpper" style="display: flex; gap: 10px;">
-            <input type="checkbox" name="stockConfim" class="checkbox-input stock-is-favorite" name="stockIsFavorite" [(ngModel)]="isConfim">
+            <input type="checkbox" name="stockConfim" 
+            class="checkbox-input stock-is-favorite" 
+            [disabled]="!createStockForm.valid"
+            name="stockIsFavorite" [(ngModel)]="isConfim">
             <label for="stock-is-favorite" class="label-checkbox">I confim that the infomation provided above is accurate!</label>
         </div>
-        <div class="button-form-warper">
-        <input type="submit" class="btn btn-success" [disabled]="!isConfim || createStockForm.invalid" value="Create Stock" >
-        <button type="button" class="btn btn-danger" (click)="isFormOpen=false" >Close</button>
-        </div>
+            <div class="button-form-warper">
+            <input type="submit" class="btn btn-success" 
+            [disabled]="!isConfim || createStockForm.invalid" 
+            value="Create Stock" >
+            <button type="button" 
+            class="btn btn-danger" 
+            (click)="isFormOpen=false" >Close</button>
+            </div>
     </form>
     <!-- {{ newStock | json }} -->
 </div>
