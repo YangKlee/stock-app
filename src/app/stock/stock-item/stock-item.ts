@@ -15,6 +15,7 @@ export class StockItem {
   // nhận stock từ cha là stockList, property đó là có thể được bind từ bên ngoài
   // ! chắc chắn rằng nó không null
   @Input() stock!: Stock;
+  isHover: Boolean = false;
   addFavorite(stock: Stock)
   {
     if(stock.favourite == true)
