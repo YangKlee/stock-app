@@ -10,25 +10,25 @@
         <div class="input-warpper stock-name-input">
             <label for="stock-name" class="label-input">Stock Name</label>
             <input type="text"  formControlName="stockName" class="stock-input stock-name" placeholder="Enter stock name..." >
-            <span  class="error-exception" *ngIf="createStockForm.get('stockName')?.invalid && createStockForm.get('stockName')?.dirty
+            <span  class="error-exception" *ngIf="createStockForm.get('stockName')?.invalid && createStockForm.get('stockName')?.touched
              " >StockName không hợp lệ </span>
         </div>
         <div class="input-warpper stock-code-input">
             <label for="stock-code" class="label-input">Stock Code</label>
             <input type="text" id="stock-code" formControlName="stockCode" class="stock-input stock-code"  placeholder="Enter stock code..." >
-            <span class="error-exception" *ngIf="createStockForm.get('stockCode')?.invalid && createStockForm.get('stockCode')?.dirty" >StockCode không hợp lệ </span>
+            <span class="error-exception" *ngIf="createStockForm.get('stockCode')?.invalid && createStockForm.get('stockCode')?.touched" >StockCode không hợp lệ </span>
         </div>
         <div class="input-warpper stock-price-input">
             <label for="stock-price" class="label-input">Stock Price</label>
             <input type="number"  formControlName="stockPrice" class="stock-input stock-price" placeholder="Enter stock price..." >
-            <span for="" class="error-exception" *ngIf="createStockForm.get('stockPrice')?.invalid && createStockForm.get('stockPrice')?.dirty
+            <span for="" class="error-exception" *ngIf="createStockForm.get('stockPrice')?.invalid && createStockForm.get('stockPrice')?.touched
              " >Stock Price không hợp lệ </span>
         </div>
         <div class="input-warpper stock-previous-price-input">
             <label for="stock-previous-price" class="label-input">Stock Previous Price</label>
             <input type="number" formControlName="stockLastPrice" class="stock-input stock-price" name="stockPreviousPrice" 
             placeholder="Enter stock previous price..." >
-            <span for="" class="error-exception" *ngIf="createStockForm.get('stockLastPrice')?.invalid && createStockForm.get('stockLastPrice')?.dirty
+            <span for="" class="error-exception" *ngIf="createStockForm.get('stockLastPrice')?.touched && createStockForm.get('stockLastPrice')?.dirty
              " >Stock Last Price không hợp lệ </span>
         </div>
         <div class="input-warpper stock-exchange">
@@ -40,7 +40,7 @@
             </select>
         </div>
         <div class="checkbox-warpper" style="display: flex; gap: 10px;">
-            <input type="checkbox" formControlName="isConfimmed"  class="checkbox-input stock-is-favorite" name="stockIsFavorite">
+            <input type="checkbox" formControlName="isConfimmed" [disabled]="createStockForm.invalid"  class="checkbox-input stock-is-favorite" name="stockIsFavorite">
             <label for="stock-is-favorite"  class="label-checkbox">I confim that the infomation provided above is accurate!</label>
         </div>
         <div class="button-form-warper">
