@@ -28,7 +28,7 @@
             <label for="stock-previous-price" class="label-input">Stock Previous Price</label>
             <input type="number" formControlName="stockLastPrice" class="stock-input stock-price" name="stockPreviousPrice" 
             placeholder="Enter stock previous price..." >
-            <span for="" class="error-exception" *ngIf="createStockForm.get('stockLastPrice')?.touched && createStockForm.get('stockLastPrice')?.dirty
+            <span for="" class="error-exception" *ngIf="createStockForm.get('stockLastPrice')?.invalid && createStockForm.get('stockLastPrice')?.touched
              " >Stock Last Price không hợp lệ </span>
         </div>
         <div class="input-warpper stock-exchange">

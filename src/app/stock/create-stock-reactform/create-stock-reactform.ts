@@ -54,6 +54,7 @@ export class CreateStockReactform implements OnInit{
       if(this.stockService.createStock(newStock))
       {
         alert("Tạo stock thành công!");
+        this.createStockForm.reset();
       }
       else
       {
