@@ -4,11 +4,12 @@ export class Stock {
     // public code: string = "";
     // public price: number = 0;
     // public previousPrice: number = 0;
+    public isFavourite: boolean = false;
     constructor(public name: string, 
         public code: string, 
         public price: number, 
         public previousPrice: number,
-        public isFavourite: boolean) {
+        public exchange: string) {
 
     }
     isIncrease(): boolean

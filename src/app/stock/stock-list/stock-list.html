@@ -1,3 +1,35 @@
+<div class="overlay" *ngIf="isShowDetialDialog"></div>
+
+<div *ngIf="isShowDetialDialog" class="view-detial-container">
+    <h1>Chi tiết Stock</h1>
+    <button (click)="isShowDetialDialog = false" class="btn-close"><i class="bi bi-x"></i></button>
+    <table  class="table">
+        <tbody>
+        <tr >
+            <th class="table-primary" >Code:</th>
+            <td>{{stockSelect.code}}</td>
+        </tr>
+        <tr >
+            <th class="table-primary">Namee:</th>
+            <td>{{stockSelect.name}}</td>
+        </tr>
+        <tr >
+            <th class="table-primary">Previous Price:</th>
+            <td>{{stockSelect.previousPrice}}</td>
+        </tr>
+        <tr >
+            <th class="table-primary">Current Price:</th>
+            <td>{{stockSelect.price}}</td>
+        </tr>
+        <tr >
+            <th class="table-primary">Exchange:</th>
+            <td>{{stockSelect.exchange}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
 <div class="stock-list-container">
     <!-- Truyền stockElement từ componet cha sang componet stock items -->
     <app-stock-item 

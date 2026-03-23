@@ -6,7 +6,7 @@ import { validate } from '@angular/forms/signals';
 import { Stock } from '../../model/stock';
 import { console } from 'node:inspector';
 import { json } from 'node:stream/consumers';
-
+import { StockService } from '../../services/stock-service';
 
 @Component({
   selector: 'app-create-stock-reactform',
@@ -19,7 +19,7 @@ export class CreateStockReactform implements OnInit{
 
   createStockForm!: FormGroup;
 
-  constructor(private frmBuilder : FormBuilder)
+  constructor(private frmBuilder : FormBuilder, private stockService:StockService)
   {
     this.createForm();
   }
@@ -34,6 +34,7 @@ export class CreateStockReactform implements OnInit{
         stockCode: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(6)]],
         stockPrice: [null, [Validators.required, Validators.min(0)]],
         stockLastPrice: [null, [Validators.required, Validators.min(0)]],
+        stockExchange: [null, [Validators.required]],
         isConfimmed: [false, null]    
   
       }
@@ -44,12 +45,20 @@ export class CreateStockReactform implements OnInit{
 
     if(this.createStockForm.valid)
     {
-      let newStock : Stock = new Stock("", "", 0 , 0, false);
+      let newStock : Stock = new Stock("", "", 0 , 0, "");
       newStock.name = this.createStockForm.value.stockName;
       newStock.code = this.createStockForm.value.stockCode;
       newStock.price = this.createStockForm.value.stockPrice;
       newStock.previousPrice = this.createStockForm.value.stockLastPrice;
-      alert("Tạo stock thành công!");
+      newStock.exchange = this.createStockForm.value.stockExchange;
+      if(this.stockService.createStock(newStock))
+      {
+        alert("Tạo stock thành công!");
+      }
+      else
+      {
+        alert("Tạo stock không thành công!");
+      }
       
     }
     else
