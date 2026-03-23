@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Stock } from '../model/stock';
+import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class StockService {
   public stockList: Array<Stock> = [];
-
+  public selectedStockCode = new BehaviorSubject<string>("");
   constructor()
   {
     this.stockList = [

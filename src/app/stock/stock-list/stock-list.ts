@@ -11,12 +11,25 @@ import { StockService } from '../../services/stock-service';
 })  
 export class StockList implements OnInit {
   isShowDetialDialog :Boolean = false;
-  public stockList: Array<Stock> = [];
+  stockSelect: Stock = new Stock("", "", 0, 0, "");
+  public stockList: Array<Stock> = [];  
   constructor(private stockServices:StockService) {
 
 
   }
   ngOnInit(): void {
-    this.stockList = this.stockServices.getAllStock()
+    this.stockList = this.stockServices.getAllStock();
+    this.stockServices.selectedStockCode.subscribe(msg =>{
+      if(msg == "")
+        this.isShowDetialDialog = false;
+      else
+      {
+
+        this.isShowDetialDialog = true;
+        let a = this.stockServices.getStock(msg);
+        if(a != undefined)
+          this.stockSelect = a
+      }
+    })
   }
 }

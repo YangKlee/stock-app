@@ -31,6 +31,6 @@ export class StockItem {
   }
   viewDetial(stock: Stock)
   {
-
+    this.StockServices.selectedStockCode.next(stock.code);
   }
 }

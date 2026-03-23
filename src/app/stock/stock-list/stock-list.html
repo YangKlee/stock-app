@@ -2,28 +2,28 @@
 
 <div *ngIf="isShowDetialDialog" class="view-detial-container">
     <h1>Chi tiết Stock</h1>
-    <button (click)="!isShowDetialDialog" class="btn-close"><i class="bi bi-x"></i></button>
+    <button (click)="isShowDetialDialog = false" class="btn-close"><i class="bi bi-x"></i></button>
     <table  class="table">
         <tbody>
         <tr >
             <th class="table-primary" >Code:</th>
-            <td>Sample</td>
+            <td>{{stockSelect.code}}</td>
         </tr>
         <tr >
             <th class="table-primary">Namee:</th>
-            <td>Sample</td>
+            <td>{{stockSelect.name}}</td>
         </tr>
         <tr >
             <th class="table-primary">Previous Price:</th>
-            <td>Sample</td>
+            <td>{{stockSelect.previousPrice}}</td>
         </tr>
         <tr >
             <th class="table-primary">Current Price:</th>
-            <td>Sample</td>
+            <td>{{stockSelect.price}}</td>
         </tr>
         <tr >
             <th class="table-primary">Exchange:</th>
-            <td>Sample</td>
+            <td>{{stockSelect.exchange}}</td>
         </tr>
         </tbody>
     </table>
