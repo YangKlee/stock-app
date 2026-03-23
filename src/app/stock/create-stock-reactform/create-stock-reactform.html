@@ -1,12 +1,12 @@
 <div class="quick-btn" style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
-    <button type="button" class="btn btn-primary"  (click)="isFormOpen = true">Add stock</button>
+    <button type="button" class="btn btn-primary"  (click)="openDialog()">Add stock</button>
 </div>
-<div class="overlay" *ngIf="isFormOpen">
+<div class="overlay" *ngIf="isFormOpen |async">
 
 </div>
-<div class="create-stock-container" *ngIf="isFormOpen">
-    <h1 class="title-form">Create Stock (React form)</h1>
-    <form  class="form-warpper" [formGroup]="createStockForm" (ngSubmit)="createStock()">
+<div class="create-stock-container" *ngIf="isFormOpen |async">
+    <h1 class="title-form">{{title_form}}</h1>
+    <form  class="form-warpper" [formGroup]="createStockForm" (ngSubmit)="submitForm()">
         <div class="input-warpper stock-name-input">
             <label for="stock-name" class="label-input">Stock Name</label>
             <input type="text"  formControlName="stockName" class="stock-input stock-name" placeholder="Enter stock name..." >
@@ -44,8 +44,8 @@
             <label for="stock-is-favorite"  class="label-checkbox">I confim that the infomation provided above is accurate!</label>
         </div>
         <div class="button-form-warper">
-        <input [disabled]="!createStockForm.get('isConfimmed')?.value || createStockForm.invalid " type="submit" class="btn btn-success" value="Create Stock" >
-        <button  class="btn btn-danger" (click)="isFormOpen=false" >Close</button>
+        <input  formControlName="stockSubmit" [disabled]="!createStockForm.get('isConfimmed')?.value || createStockForm.invalid " type="submit" class="btn btn-success" >
+        <button type="button"  class="btn btn-danger" (click)="closeDialog()" >Close</button>
         </div>
 
     </form>

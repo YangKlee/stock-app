@@ -7,6 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class StockService {
   public stockList: Array<Stock> = [];
   public selectedStockCode = new BehaviorSubject<string>("");
+  public modifyStockCode = new BehaviorSubject<string>("");
   constructor()
   {
     this.stockList = [

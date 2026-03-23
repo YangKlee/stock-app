@@ -7,6 +7,7 @@ import { Stock } from '../../model/stock';
 import { console } from 'node:inspector';
 import { json } from 'node:stream/consumers';
 import { StockService } from '../../services/stock-service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-create-stock-reactform',
@@ -15,30 +16,76 @@ import { StockService } from '../../services/stock-service';
   styleUrl: './create-stock-reactform.css',
 })
 export class CreateStockReactform implements OnInit{
-  isFormOpen: boolean = false;
-
+  public isFormOpen = new BehaviorSubject<boolean>(false);
+  title_form: string = "";
   createStockForm!: FormGroup;
-
+  isModifyMode: Boolean = false;
   constructor(private frmBuilder : FormBuilder, private stockService:StockService)
   {
-    this.createForm();
+    // this.createForm();
   }
   ngOnInit(): void {
-    
+    this.stockService.modifyStockCode.subscribe(code =>{
+      if(code != "")
+      {
+        this.title_form="Modify Stock";
+        this.isFormOpen.next(true);
+        this.isModifyMode = true;
+        let stockObj = this.stockService.getStock(code);
+        if(stockObj)
+          this.createFormForModify(stockObj)
+      }
+      else
+      {
+        this.title_form= "Create Stock"
+        
+      }
+    })
+  }
+  openDialog()
+  {
+    this.createForm();
+    this.isFormOpen.next(true);
   }
   createForm()
   {
     this.createStockForm = this.frmBuilder.group(
       {
-        stockName: [null, [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
-        stockCode: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(6)]],
+        stockName: [null, [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
+        stockCode: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(6)]],
         stockPrice: [null, [Validators.required, Validators.min(0)]],
         stockLastPrice: [null, [Validators.required, Validators.min(0)]],
         stockExchange: [null, [Validators.required]],
+        stockSubmit: ["Create Stock", []],
+        isConfimmed: [false, []]    
+  
+      }
+    )
+  }
+  createFormForModify(stock : Stock){
+    this.createStockForm = this.frmBuilder.group(
+      {
+        stockName: [stock.name, [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
+        stockCode: [stock.code, [Validators.required, Validators.minLength(2), Validators.maxLength(6)]],
+        stockPrice: [stock.price, [Validators.required, Validators.min(0)]],
+        stockLastPrice: [stock.previousPrice, [Validators.required, Validators.min(0)]],
+        stockExchange: [stock.exchange, [Validators.required]],
+        stockSubmit: ["Modify Stock", null],
         isConfimmed: [false, null]    
   
       }
     )
+  }
+  submitForm()
+  {
+    if(!this.isModifyMode)
+    {
+      this.createStock()
+    }
+    else
+    {
+      this.modifyStock();
+    }
   }
   createStock()
   {
@@ -55,6 +102,7 @@ export class CreateStockReactform implements OnInit{
       {
         alert("Tạo stock thành công!");
         this.createStockForm.reset();
+        this.isFormOpen.next(false);
       }
       else
       {
@@ -66,5 +114,42 @@ export class CreateStockReactform implements OnInit{
     {
       alert("Có trường k hợp lệ!");
     }
+  }
+  modifyStock()
+  {
+        if(this.createStockForm.valid)
+    {
+      let newStock : Stock = new Stock("", "", 0 , 0, "");
+      newStock.name = this.createStockForm.value.stockName;
+      newStock.code = this.createStockForm.value.stockCode;
+      newStock.price = this.createStockForm.value.stockPrice;
+      newStock.previousPrice = this.createStockForm.value.stockLastPrice;
+      newStock.exchange = this.createStockForm.value.stockExchange;
+      if(this.stockService.modifyStock(newStock.code,newStock))
+      {
+        alert("Sửa stock thành công!");
+        this.createStockForm.reset();
+        this.isFormOpen.next(false);
+      }
+      else
+      {
+        alert("Sửa stock không thành công!");
+      }
+      
+    }
+    else
+    {
+      alert("Có trường k hợp lệ!");
+    }
+  }
+  closeDialog()
+  {
+    this.isFormOpen.next(false)
+    if(this.isModifyMode)
+    {
+      this.stockService.modifyStockCode.next("");
+      
+    }
+    this.createStockForm.reset();
   }
 }

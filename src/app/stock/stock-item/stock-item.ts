@@ -34,4 +34,8 @@ export class StockItem {
   {
     this.StockServices.selectedStockCode.next(stock.code);
   }
+  modifyStock(stock: Stock)
+  {
+    this.StockServices.modifyStockCode.next(stock.code);
+  }
 }
