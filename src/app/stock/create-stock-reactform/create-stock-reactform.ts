@@ -143,7 +143,6 @@ export class CreateStockReactform implements OnInit{
     //   alert("Có trường k hợp lệ!");
     // }
 
-
   }
   modifyStock()
   {
