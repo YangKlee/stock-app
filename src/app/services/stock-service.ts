@@ -16,10 +16,20 @@ export class StockService {
   public modifyStockCode = new BehaviorSubject<string>("");
   constructor()
   {
-    this.stockList = [
-      new Stock("HDPE là ngon luôn", "HDPE", 85,80, "VNINDEX"),
-      new Stock("67 Coin", "67", 100,10, "NAPAS")
-    ];
+  this.stockList = [
+    new Stock("Hòa Phát Group", "HPG", 28500, 28000, "VNINDEX"),
+    new Stock("Vingroup", "VIC", 72000, 71000, "VNINDEX"),
+    new Stock("Vinamilk", "VNM", 68000, 69000, "VNINDEX"),
+    new Stock("FPT Corporation", "FPT", 95000, 94000, "VNINDEX"),
+
+    new Stock("Reliance Industries", "RELIANCE", 2500, 2450, "NSE"),
+    new Stock("Tata Consultancy", "TCS", 3600, 3550, "NSE"),
+    new Stock("Infosys", "INFY", 1500, 1480, "NSE"),
+
+    new Stock("Apple Inc.", "AAPL", 190, 185, "NYSE"),
+    new Stock("Microsoft", "MSFT", 420, 410, "NYSE"),
+    new Stock("Tesla", "TSLA", 210, 205, "NYSE"),
+  ];
   }
   // of = wrap value thành Observable
   // mọi function đều phải trả về dữ liệu dưới dạng bất đồng bộ
@@ -79,5 +89,12 @@ export class StockService {
       return of({ msg: "Xóa stock thành công!" });
     }
 
+  }
+  searchStock(keyword: String): Observable<Stock[]>
+  {
+    return of(this.stockList.filter(e => 
+      e.name.toLowerCase().includes(keyword.toLowerCase())
+      || e.code.toLowerCase().includes(keyword.toLowerCase())
+    ))
   }
 }

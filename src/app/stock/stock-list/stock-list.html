@@ -1,4 +1,7 @@
 <app-details-stock *ngIf="isShowDetialDialog" [StockData]="this.stockSelect"></app-details-stock>
+<div class="search-stock">
+    <input [(ngModel)]="searchKeyword" (input)="doSearch()"  type="text" placeholder="Nhập mã hoặc tên stock để tìm kiếm...">
+</div>
 <div class="stock-list-container">
     <!-- Truyền stockElement từ componet cha sang componet stock items -->
     <app-stock-item 

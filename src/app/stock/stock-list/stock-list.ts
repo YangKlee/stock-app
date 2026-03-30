@@ -4,26 +4,32 @@ import { Stock } from '../../model/stock';
 import { StockItem } from '../stock-item/stock-item';
 import { StockService } from '../../services/stock-service';
 import { DetailsStock } from '../details-stock/details-stock';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-stock-list',
-  imports: [CommonModule, StockItem, DetailsStock],
+  imports: [CommonModule, StockItem, DetailsStock, FormsModule],
   templateUrl: './stock-list.html',
   styleUrls: ['./stock-list.css'],
 })  
 export class StockList implements OnInit {
   isShowDetialDialog :Boolean = false;
+  searchKeyword: String = "";
   stockSelect: Stock = new Stock("", "", 0, 0, "");
   public stockList: Array<Stock> = [];  
   constructor(private stockServices:StockService) {
 
 
   }
-  ngOnInit(): void {
-    this.stockServices.getAllStock().subscribe(
+  getStock()
+  {
+        this.stockServices.getAllStock().subscribe(
       (data)=>{
         this.stockList = data;
       }
     )
+  }
+  ngOnInit(): void {
+    this.getStock();
     // this.stockList = this.stockServices.getAllStock();
     this.stockServices.selectedStockCode.subscribe(msg =>{
       if(msg == "")
@@ -41,5 +47,20 @@ export class StockList implements OnInit {
       }
     })
   }
-  
+  doSearch()
+  {
+    if(this.searchKeyword == "")
+    {
+      this.getStock();
+    }
+    else
+    {
+      this.stockServices.searchStock(this.searchKeyword).subscribe((data: Stock[])=>
+      {
+        this.stockList = data;
+      }
+      )
+    }
+    //console.log(this.searchKeyword);
+  } 
 }

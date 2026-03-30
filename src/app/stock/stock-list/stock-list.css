@@ -2,8 +2,9 @@
     margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    column-gap: 30px;
+    row-gap: 20px;
+    justify-content: flex-start;
     box-sizing: border-box;
 }
 .view-detial-container table th{
@@ -36,4 +37,14 @@
     right: 10px;
     z-index: 2;
     
+}
+.search-stock{
+
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.search-stock input{
+    padding: 5px 10px;
+    width: 300px;
 }
