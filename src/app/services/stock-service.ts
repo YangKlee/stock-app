@@ -54,30 +54,29 @@ export class StockService {
       return of({ msg: "Thêm stock thành công!" });
     }
   }
-  modifyStock(stockCode: string, newStock: Stock):boolean
+  modifyStock(newStock: Stock): Observable<any>
   {
 
-    let i = this.stockList.findIndex(e => e.code == stockCode);
+    let i = this.stockList.findIndex(e => e.code == newStock.code);
     if(i == undefined)
-      return false;
+      return throwError(() => ({ msg: "Ủa alo, Hông tìm thấy stock cần sửa" }));
     else
     {
       this.stockList[i] = newStock;
-      return true;
+      return of({ msg: "Sửa stock thành công ròi nè!" });
     }
-    return false;
   }
-  deleteStock(stockCode: string)
+  deleteStock(stockCode: string): Observable<any>
   {
     let i = this.stockList.findIndex(e => e.code == stockCode);
     if(i == undefined)
-      return false;
+      return throwError(() => ({ msg: "Ủa alo, Hông tìm thấy stock cần xóa" }));
     else
     {
       // hàm splice dùng để chèn, xóa phần tử
       // splice(<vị trí action>, <số lượng phần tử bị tác động>, ...)
       this.stockList.splice(i, 1);
-      return true;
+      return of({ msg: "Xóa stock thành công!" });
     }
 
   }

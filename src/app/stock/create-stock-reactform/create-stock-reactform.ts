@@ -105,6 +105,8 @@ export class CreateStockReactform implements OnInit{
         (result:any)=>{
           console.log("Create complete!");
           noti = result.msg;
+          this.createStockForm.reset();
+          this.isFormOpen.next(false);
           
         },
         (err: any)=>{
@@ -113,37 +115,12 @@ export class CreateStockReactform implements OnInit{
         }
       
       )
-      this.createStockForm.reset();
-      this.isFormOpen.next(false);
+
       alert(noti);
     }
     else{
       alert("Có trường không hợp lệ!");
     }
-    // if(this.createStockForm.valid)
-    // {
-    //   let newStock : Stock = new Stock("", "", 0 , 0, "");
-    //   newStock.name = this.createStockForm.value.stockName;
-    //   newStock.code = this.createStockForm.value.stockCode;
-    //   newStock.price = this.createStockForm.value.stockPrice;
-    //   newStock.previousPrice = this.createStockForm.value.stockLastPrice;
-    //   newStock.exchange = this.createStockForm.value.stockExchange;
-    //   if(this.stockService.createStock(newStock))
-    //   {
-    //     alert("Tạo stock thành công!");
-    //     this.createStockForm.reset();
-    //     this.isFormOpen.next(false);
-    //   }
-    //   else
-    //   {
-    //     alert("Tạo stock không thành công!");
-    //   }
-      
-    // }
-    // else
-    // {
-    //   alert("Có trường k hợp lệ!");
-    // }
 
   }
   modifyStock()
@@ -156,16 +133,26 @@ export class CreateStockReactform implements OnInit{
       newStock.price = this.createStockForm.value.stockPrice;
       newStock.previousPrice = this.createStockForm.value.stockLastPrice;
       newStock.exchange = this.createStockForm.value.stockExchange;
-      if(this.stockService.modifyStock(newStock.code,newStock))
-      {
-        alert("Sửa stock thành công!");
-        this.createStockForm.reset();
-        this.isFormOpen.next(false);
-      }
-      else
-      {
-        alert("Sửa stock không thành công!");
-      }
+      this.stockService.modifyStock(newStock).subscribe(
+        (data: any)=>{
+          alert(data.msg);
+          this.createStockForm.reset();
+          this.isFormOpen.next(false);
+        },
+        (data: any)=>{
+          alert(data.msg);
+        }
+      )
+      // if(this.stockService.modifyStock(newStock.code,newStock))
+      // {
+      //   alert("Sửa stock thành công!");
+      //   this.createStockForm.reset();
+      //   this.isFormOpen.next(false);
+      // }
+      // else
+      // {
+      //   alert("Sửa stock không thành công!");
+      // }
       
     }
     else

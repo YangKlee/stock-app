@@ -25,10 +25,20 @@ export class StockItem {
   }
   deleteStock(stock: Stock)
   {
-    if(this.StockServices.deleteStock(stock.code))
-      alert("Xóa stock thành công");
-    else
-      alert("Xóa stock không thành công");
+    this.StockServices.deleteStock(stock.code).subscribe(
+      (success: any) =>
+      {
+        alert(success.msg);
+      },
+      (err: any) =>
+      {
+        alert(err.msg);
+      }
+    )
+    // if(this.StockServices.deleteStock(stock.code))
+    //   alert("Xóa stock thành công");
+    // else
+    //   alert("Xóa stock không thành công");
   }
   viewDetial(stock: Stock)
   {
