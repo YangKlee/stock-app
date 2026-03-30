@@ -3,8 +3,7 @@ import { BlobOptions } from 'node:buffer';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { validate } from '@angular/forms/signals';
-import { Stock } from '../../model/stock';
-import { console } from 'node:inspector';
+import { Stock } from '../../model/stock';;
 import { json } from 'node:stream/consumers';
 import { StockService } from '../../services/stock-service';
 import { BehaviorSubject } from 'rxjs';
@@ -31,9 +30,9 @@ export class CreateStockReactform implements OnInit{
         this.title_form="Modify Stock";
         this.isFormOpen.next(true);
         this.isModifyMode = true;
-        let stockObj = this.stockService.getStock(code);
-        if(stockObj)
-          this.createFormForModify(stockObj)
+        // let stockObj = this.stockService.getStock(code);
+        // if(stockObj)
+        //   this.createFormForModify(stockObj)
       }
       else
       {
@@ -45,6 +44,7 @@ export class CreateStockReactform implements OnInit{
   }
   openDialog()
   {
+    console.log("Open dialog!");
     this.createForm();
     this.isFormOpen.next(true);
   }
@@ -90,31 +90,60 @@ export class CreateStockReactform implements OnInit{
   }
   createStock()
   {
-
+    console.log("create stock click");
     if(this.createStockForm.valid)
     {
+      let noti: String = "";
       let newStock : Stock = new Stock("", "", 0 , 0, "");
       newStock.name = this.createStockForm.value.stockName;
       newStock.code = this.createStockForm.value.stockCode;
       newStock.price = this.createStockForm.value.stockPrice;
       newStock.previousPrice = this.createStockForm.value.stockLastPrice;
       newStock.exchange = this.createStockForm.value.stockExchange;
-      if(this.stockService.createStock(newStock))
-      {
-        alert("Tạo stock thành công!");
-        this.createStockForm.reset();
-        this.isFormOpen.next(false);
-      }
-      else
-      {
-        alert("Tạo stock không thành công!");
-      }
+      this.stockService.createStock(newStock).subscribe(
+        // hàm trả về khi hàm api được chạy thành công, k lỗi
+        (result:any)=>{
+          console.log("Create complete!");
+          noti = result.msg;
+          this.createStockForm.reset();
+        },
+        (err: any)=>{
+          console.log("Error ");
+          noti = err.msg;
+        }
       
+      )
+      alert(noti);
     }
-    else
-    {
-      alert("Có trường k hợp lệ!");
+    else{
+      alert("Có trường không hợp lệ!");
     }
+    // if(this.createStockForm.valid)
+    // {
+    //   let newStock : Stock = new Stock("", "", 0 , 0, "");
+    //   newStock.name = this.createStockForm.value.stockName;
+    //   newStock.code = this.createStockForm.value.stockCode;
+    //   newStock.price = this.createStockForm.value.stockPrice;
+    //   newStock.previousPrice = this.createStockForm.value.stockLastPrice;
+    //   newStock.exchange = this.createStockForm.value.stockExchange;
+    //   if(this.stockService.createStock(newStock))
+    //   {
+    //     alert("Tạo stock thành công!");
+    //     this.createStockForm.reset();
+    //     this.isFormOpen.next(false);
+    //   }
+    //   else
+    //   {
+    //     alert("Tạo stock không thành công!");
+    //   }
+      
+    // }
+    // else
+    // {
+    //   alert("Có trường k hợp lệ!");
+    // }
+
+
   }
   modifyStock()
   {

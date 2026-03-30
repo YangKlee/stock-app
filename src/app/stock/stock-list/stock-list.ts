@@ -18,18 +18,23 @@ export class StockList implements OnInit {
 
   }
   ngOnInit(): void {
-    this.stockList = this.stockServices.getAllStock();
-    this.stockServices.selectedStockCode.subscribe(msg =>{
-      if(msg == "")
-        this.isShowDetialDialog = false;
-      else
-      {
-
-        this.isShowDetialDialog = true;
-        let a = this.stockServices.getStock(msg);
-        if(a != undefined)
-          this.stockSelect = a
+    this.stockServices.getAllStock().subscribe(
+      (data)=>{
+        this.stockList = data;
       }
-    })
+    )
+    // this.stockList = this.stockServices.getAllStock();
+    // this.stockServices.selectedStockCode.subscribe(msg =>{
+    //   if(msg == "")
+    //     this.isShowDetialDialog = false;
+    //   else
+    //   {
+
+    //     this.isShowDetialDialog = true;
+    //     let a = this.stockServices.getStock(msg);
+    //     if(a != undefined)
+    //       this.stockSelect = a
+    //   }
+    // })
   }
 }

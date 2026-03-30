@@ -1,3 +1,9 @@
+//  import { Observable } from "rxjs/Observable"; not work in new version
+import { Observable } from "rxjs";
+// import {_throw as ObservableThrow} from "rxjs/observable/throw" not work in new version
+import { throwError } from "rxjs";
+//import { of as ObservableOf } from 'rxjs/observable/of'; not work in new version
+import { of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Stock } from '../model/stock';
 import { BehaviorSubject } from 'rxjs';
@@ -15,26 +21,38 @@ export class StockService {
       new Stock("67 Coin", "67", 100,10, "NAPAS")
     ];
   }
-  getAllStock() : Array<Stock>
+  // of = wrap value thành Observable
+  // mọi function đều phải trả về dữ liệu dưới dạng bất đồng bộ
+  getAllStock() : Observable<Stock[]>
   {
-    return this.stockList;
+    return of(this.stockList);
   }
-  getStock(code: string): Stock | undefined
+  getStock(code: string): Observable<any>
   {
     let searchStock = this.stockList.find(e => e.code == code);
-    return searchStock;
+    return of(searchStock);
   }
   // return về code
   // báo thành công hay k
-  createStock(newStock: Stock): boolean
+  createStock(newStock: Stock): Observable<any>
   {
-    // nếu hong tìm thấy -> hong có bị trùng
-    if(this.getStock(newStock.code) == undefined)
+    // // nếu hong tìm thấy -> hong có bị trùng
+    // if(this.getStock(newStock.code) == undefined)
+    // {
+    //   this.stockList.push(newStock);
+    //   return true;
+    // }
+    // return false;
+    let foundStock = this.stockList.find(e => e.code == newStock.code);
+    if(foundStock)
+    {
+      return throwError(() => ({ msg: "Stock đã tồn tại rồi má!" }));
+    }
+    else
     {
       this.stockList.push(newStock);
-      return true;
+      return of({ msg: "Thêm stock thành công!" });
     }
-    return false;
   }
   modifyStock(stockCode: string, newStock: Stock):boolean
   {
