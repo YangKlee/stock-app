@@ -37,6 +37,7 @@ export class CreateStockReactform implements OnInit{
       }
       else
       {
+        this.isModifyMode = false;
         this.title_form= "Create Stock"
         
       }

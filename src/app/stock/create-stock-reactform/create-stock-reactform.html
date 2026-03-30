@@ -13,10 +13,10 @@
             <span  class="error-exception" *ngIf="createStockForm.get('stockName')?.invalid && createStockForm.get('stockName')?.touched
              " >StockName không hợp lệ </span>
         </div>
-        <div class="input-warpper stock-code-input">
+        <div class="input-warpper stock-code-input" [hidden]="isModifyMode">
             <label for="stock-code" class="label-input">Stock Code</label>
-            <input type="text" id="stock-code" formControlName="stockCode" class="stock-input stock-code"  placeholder="Enter stock code..." >
-            <span class="error-exception" *ngIf="createStockForm.get('stockCode')?.invalid && createStockForm.get('stockCode')?.touched" >StockCode không hợp lệ </span>
+            <input type="text" id="stock-code"  formControlName="stockCode" class="stock-input stock-code"  placeholder="Enter stock code..." >
+            <span class="error-exception"  *ngIf="createStockForm.get('stockCode')?.invalid && createStockForm.get('stockCode')?.touched" >StockCode không hợp lệ </span>
         </div>
         <div class="input-warpper stock-price-input">
             <label for="stock-price" class="label-input">Stock Price</label>
