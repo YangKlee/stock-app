@@ -44,7 +44,7 @@
             <label for="stock-is-favorite"  class="label-checkbox">I confim that the infomation provided above is accurate!</label>
         </div>
         <div class="button-form-warper">
-        <input  formControlName="stockSubmit" [disabled]="!createStockForm.get('isConfimmed')?.value || createStockForm.invalid " type="submit" class="btn btn-success" >
+        <input [disabled]="!createStockForm.get('isConfimmed')?.value || createStockForm.invalid" type="submit" class="btn btn-success" value="Submit">
         <button type="button"  class="btn btn-danger" (click)="closeDialog()" >Close</button>
         </div>
 

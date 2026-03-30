@@ -30,9 +30,9 @@ export class CreateStockReactform implements OnInit{
         this.title_form="Modify Stock";
         this.isFormOpen.next(true);
         this.isModifyMode = true;
-        // let stockObj = this.stockService.getStock(code);
-        // if(stockObj)
-        //   this.createFormForModify(stockObj)
+        this.stockService.getStock(code).subscribe((data: Stock)=>{
+          this.createFormForModify(data)
+        })
       }
       else
       {
@@ -105,7 +105,7 @@ export class CreateStockReactform implements OnInit{
         (result:any)=>{
           console.log("Create complete!");
           noti = result.msg;
-          this.createStockForm.reset();
+          
         },
         (err: any)=>{
           console.log("Error ");
@@ -113,6 +113,8 @@ export class CreateStockReactform implements OnInit{
         }
       
       )
+      this.createStockForm.reset();
+      this.isFormOpen.next(false);
       alert(noti);
     }
     else{
