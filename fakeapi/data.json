@@ -6,7 +6,7 @@
       "code": "TSC",
       "price": 85,
       "previousPrice": 80,
-      "exchange": "NASDAQ",
+      "exchange": "NSE",
       "favorite": "false"
     },
     {
@@ -15,7 +15,7 @@
       "code": "MSFT",
       "price": 420,
       "previousPrice": 410,
-      "exchange": "NASDAQ",
+      "exchange": "NSE",
       "favorite": false
     },
     {
@@ -33,7 +33,7 @@
       "code": "GOOGL",
       "price": 135,
       "previousPrice": 130,
-      "exchange": "NASDAQ",
+      "exchange": "NSE",
       "favorite": "false"
     },
     {
@@ -42,7 +42,7 @@
       "code": "META",
       "price": 300,
       "previousPrice": 295,
-      "exchange": "NASDAQ",
+      "exchange": "NSE",
       "favorite": "false"
     },
     {
@@ -51,7 +51,7 @@
       "code": "NFLX",
       "price": 480,
       "previousPrice": 470,
-      "exchange": "NASDAQ",
+      "exchange": "NSE",
       "favorite": "false"
     },
     {
@@ -60,7 +60,7 @@
       "code": "NVDA",
       "price": 900,
       "previousPrice": 880,
-      "exchange": "NASDAQ",
+      "exchange": "NSE",
       "favorite": "false"
     },
     {
@@ -69,7 +69,7 @@
       "code": "INTC",
       "price": 45,
       "previousPrice": 50,
-      "exchange": "NASDAQ",
+      "exchange": "NSE",
       "favorite": "false"
     },
     {
@@ -78,7 +78,7 @@
       "code": "AMD",
       "price": 160,
       "previousPrice": 155,
-      "exchange": "NASDAQ",
+      "exchange": "NSE",
       "favorite": "false"
     },
     {
@@ -88,6 +88,24 @@
       "price": 333,
       "previousPrice": 222,
       "exchange": "VNINDEX",
+      "favorite": false
+    },
+    {
+      "id": "NpUhAxsvF-Y",
+      "name": "Quá tày",
+      "code": "222",
+      "price": 333,
+      "previousPrice": 55,
+      "exchange": "NSE",
+      "favorite": false
+    },
+    {
+      "id": "P-eGUFYO_rI",
+      "name": "RON-95",
+      "code": "RON-95",
+      "price": 39000,
+      "previousPrice": 24000,
+      "exchange": "NSE",
       "favorite": false
     }
   ],

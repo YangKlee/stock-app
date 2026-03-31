@@ -49,7 +49,7 @@ padding: 30px;
     width: 400px;
     margin-top: 20px;
 }
-.stock-name.ng-valid
+/* .stock-name.ng-valid
 {
     background-color: rgba(60, 255, 0, 0.2);
 }
@@ -72,7 +72,7 @@ padding: 30px;
 .stock-price.ng-touched
 {
     background-color: rgba(255, 0, 0, 0.2);
-}
+} */
 .stock-input.ng-invalid.ng-touched{
     border-color: red;
 }
