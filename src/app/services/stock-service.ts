@@ -39,7 +39,7 @@ export class StockService {
   getAllStock() : Observable<Stock[]>
   {
     
-      return this.httpServices.getStock().pipe(
+      let data= this.httpServices.getStock().pipe(
         map((rawData: any[]) =>
           rawData.  map((e: any) =>
             new Stock(
@@ -53,6 +53,10 @@ export class StockService {
           )
         )
       );
+      data.subscribe((e: Stock[])=>{
+        this.stockList = e;
+      })
+      return data;
           
   }
   getStock(id: number): Observable<Stock> {

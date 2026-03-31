@@ -56,7 +56,7 @@ export class StockList implements OnInit {
   }
   doSearch()
   {
-    if(this.searchKeyword == "")
+    if(this.searchKeyword == "" || this.searchKeyword==null)
     {
       this.getStock();
     }
