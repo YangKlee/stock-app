@@ -19,10 +19,7 @@ export class StockItem {
   isHover: Boolean = false;
   addFavorite(stock: Stock)
   {
-    if(stock.favourite == true)
-      stock.favourite = false;
-    else
-      stock.favourite = true;
+    this.StockServices.toggleFavourite(stock);
   }
   deleteStock(stock: Stock)
   {

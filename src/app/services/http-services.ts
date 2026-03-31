@@ -33,6 +33,10 @@ export class HttpServices {
   {
     return this.httpClient.get<any>(`${this.URL_STOCK}/${id}`, this.httpOptions);
   }
+  public farvoriteStock(id: number, isFavorite: Boolean)
+  {
+    return this.httpClient.patch<any>(`${this.URL_STOCK}/${id}`,{"favorite": isFavorite}, this.httpOptions)
+  }
 }
 
 

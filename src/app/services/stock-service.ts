@@ -55,9 +55,17 @@ export class StockService {
       );
           
   }
-  getStock(id: number): Observable<any>
-  {
-    return this.httpServices.getStockById(id);
+  getStock(id: number): Observable<Stock> {
+    return this.httpServices.getStockById(id).pipe(
+      map(e => new Stock(
+        id,
+        e.name,
+        e.code,
+        e.price,
+        e.previousPrice,
+        e.exchange
+      ))
+    );
   }
   // return về code
   // báo thành công hay k
@@ -99,5 +107,17 @@ export class StockService {
       e.name.toLowerCase().includes(keyword.toLowerCase())
       || e.code.toLowerCase().includes(keyword.toLowerCase())
     ))
+  }
+  toggleFavourite(stock: Stock)
+  {
+    if(stock.isFavourite)
+    {
+      this.httpServices.farvoriteStock(stock.id, false);
+    }
+    else
+    {
+      this.httpServices.farvoriteStock(stock.id, true);
+    }
+    this.isReloadStockData.next(true);
   }
 }
