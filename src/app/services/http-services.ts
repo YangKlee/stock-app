@@ -21,8 +21,18 @@ export class HttpServices {
   }
   public postStock(body: any): Observable<any>
   {
-    return this.httpClient.post<any>(this.URL_STOCK,body. this.httpOptions);
+    return this.httpClient.post<any>(this.URL_STOCK,body, this.httpOptions);
   }
+  public deleteStock(id: number): Observable<any> {
+    return this.httpClient.delete<any>(`${this.URL_STOCK}/${id}`, this.httpOptions);
   }
+  public updateStock(id: number, body: any): Observable<any> {
+    return this.httpClient.put<any>(`${this.URL_STOCK}/${id}`, body, this.httpOptions);
+  }
+  public getStockById(id: number)
+  {
+    return this.httpClient.get<any>(`${this.URL_STOCK}/${id}`, this.httpOptions);
+  }
+}
 
 

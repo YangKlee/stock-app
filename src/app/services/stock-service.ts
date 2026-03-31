@@ -14,8 +14,9 @@ import { map } from 'rxjs/operators';
 })
 export class StockService {
   public stockList: Array<Stock> = [];
-  public selectedStockCode = new BehaviorSubject<string>("");
-  public modifyStockCode = new BehaviorSubject<string>("");
+  public selectedStockCode = new BehaviorSubject<number>(-1);
+  public modifyStockCode = new BehaviorSubject<number>(-1);
+  public isReloadStockData = new BehaviorSubject<Boolean>(false);
   constructor(private httpServices: HttpServices)
   {
   this.stockList = [
@@ -37,9 +38,10 @@ export class StockService {
   // mọi function đều phải trả về dữ liệu dưới dạng bất đồng bộ
   getAllStock() : Observable<Stock[]>
   {
+    
       return this.httpServices.getStock().pipe(
         map((rawData: any[]) =>
-          rawData.map((e: any) =>
+          rawData.  map((e: any) =>
             new Stock(
               e.id,
               e.name,
@@ -53,59 +55,43 @@ export class StockService {
       );
           
   }
-  getStock(code: string): Observable<any>
+  getStock(id: number): Observable<any>
   {
-    let searchStock = this.stockList.find(e => e.code == code);
-
-    return of(searchStock);
+    return this.httpServices.getStockById(id);
   }
   // return về code
   // báo thành công hay k
   createStock(newStock: Stock): Observable<any>
   {
-    // // nếu hong tìm thấy -> hong có bị trùng
-    // if(this.getStock(newStock.code) == undefined)
-    // {
-    //   this.stockList.push(newStock);
-    //   return true;
-    // }
-    // return false;
-    let foundStock = this.stockList.find(e => e.code == newStock.code);
-    if(foundStock)
-    {
-      return throwError(() => ({ msg: "Stock đã tồn tại rồi má!" }));
-    }
-    else
-    {
-      this.stockList.push(newStock);
-      return of({ msg: "Thêm stock thành công!" });
-    }
+    const body = {
+      "id": newStock.id,
+      "name": newStock.name,
+      "code": newStock.code,
+      "price": newStock.price,
+      "previousPrice": newStock.previousPrice,
+      "exchange": newStock.exchange,
+      "favorite": newStock.favourite,
+    };
+    return this.httpServices.postStock(body);
   }
-  modifyStock(newStock: Stock): Observable<any>
+  modifyStock(newStock: Stock, id: number): Observable<any>
+  {
+    const body = {
+      "id": newStock.id,
+      "name": newStock.name,
+      "code": newStock.code,
+      "price": newStock.price,
+      "previousPrice": newStock.previousPrice,
+      "exchange": newStock.exchange,
+      "favorite": newStock.favourite,
+    };
+    return this.httpServices.updateStock(id, body);
+  }
+  deleteStock(stockID: number): Observable<any>
   {
 
-    let i = this.stockList.findIndex(e => e.code == newStock.code);
-    if(i == undefined)
-      return throwError(() => ({ msg: "Ủa alo, Hông tìm thấy stock cần sửa" }));
-    else
-    {
-      this.stockList[i] = newStock;
-      return of({ msg: "Sửa stock thành công ròi nè!" });
-    }
-  }
-  deleteStock(stockCode: string): Observable<any>
-  {
-    let i = this.stockList.findIndex(e => e.code == stockCode);
-    if(i == undefined)
-      return throwError(() => ({ msg: "Ủa alo, Hông tìm thấy stock cần xóa" }));
-    else
-    {
-      // hàm splice dùng để chèn, xóa phần tử
-      // splice(<vị trí action>, <số lượng phần tử bị tác động>, ...)
-      this.stockList.splice(i, 1);
-      return of({ msg: "Xóa stock thành công!" });
-    }
-
+    return this.httpServices.deleteStock(stockID);
+    
   }
   searchStock(keyword: String): Observable<Stock[]>
   {

@@ -32,7 +32,7 @@ export class StockList implements OnInit {
     this.getStock();
     // this.stockList = this.stockServices.getAllStock();
     this.stockServices.selectedStockCode.subscribe(msg =>{
-      if(msg == "")
+      if(msg == -1)
       {
                 this.isShowDetialDialog = false;
         this.stockSelect = new Stock(0,"", "", 0, 0, "");
@@ -44,6 +44,13 @@ export class StockList implements OnInit {
           this.isShowDetialDialog = true;
           console.log(this.stockSelect);
         })
+      }
+    })
+    this.stockServices.isReloadStockData.subscribe((data: Boolean)=>{
+      if(data == true)
+      {
+        this.getStock();
+        this.stockServices.isReloadStockData.next(false);
       }
     })
   }

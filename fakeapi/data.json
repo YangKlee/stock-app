@@ -1,7 +1,7 @@
 {
   "stocks": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Test Stock Company",
       "code": "TSC",
       "price": 85,
@@ -10,43 +10,25 @@
       "favorite": "false"
     },
     {
-      "id": 2,
-      "name": "Apple Inc.",
-      "code": "AAPL",
-      "price": 190,
-      "previousPrice": 185,
-      "exchange": "NASDAQ",
-      "favorite": "false"
-    },
-    {
-      "id": 3,
-      "name": "Microsoft Corp.",
+      "id": "3",
+      "name": "Microsoft",
       "code": "MSFT",
       "price": 420,
       "previousPrice": 410,
       "exchange": "NASDAQ",
-      "favorite": "false"
+      "favorite": false
     },
     {
-      "id": 4,
-      "name": "Tesla Inc.",
-      "code": "TSLA",
-      "price": 210,
-      "previousPrice": 215,
-      "exchange": "NASDAQ",
-      "favorite": "false"
-    },
-    {
-      "id": 5,
-      "name": "Amazon.com Inc.",
+      "id": "5",
+      "name": "Amazon.com",
       "code": "AMZN",
       "price": 145,
       "previousPrice": 140,
-      "exchange": "NASDAQ",
-      "favorite": "false"
+      "exchange": "VNINDEX",
+      "favorite": false
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Alphabet Inc.",
       "code": "GOOGL",
       "price": 135,
@@ -55,7 +37,7 @@
       "favorite": "false"
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "Meta Platforms",
       "code": "META",
       "price": 300,
@@ -64,7 +46,7 @@
       "favorite": "false"
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "Netflix Inc.",
       "code": "NFLX",
       "price": 480,
@@ -73,7 +55,7 @@
       "favorite": "false"
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "NVIDIA Corp.",
       "code": "NVDA",
       "price": 900,
@@ -82,7 +64,7 @@
       "favorite": "false"
     },
     {
-      "id": 10,
+      "id": "10",
       "name": "Intel Corp.",
       "code": "INTC",
       "price": 45,
@@ -91,13 +73,23 @@
       "favorite": "false"
     },
     {
-      "id": 11,
+      "id": "11",
       "name": "AMD Inc.",
       "code": "AMD",
       "price": 160,
       "previousPrice": 155,
       "exchange": "NASDAQ",
       "favorite": "false"
+    },
+    {
+      "id": "U0bwFt2J6pY",
+      "name": "qwqqwqw",
+      "code": "222",
+      "price": 333,
+      "previousPrice": 222,
+      "exchange": "VNINDEX",
+      "favorite": false
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

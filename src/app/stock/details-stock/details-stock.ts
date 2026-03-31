@@ -17,7 +17,7 @@ export class DetailsStock implements OnInit {
   }
   closeDialog()
   {
-    this.stockServices.selectedStockCode.next("");
+    this.stockServices.selectedStockCode.next(-1);
     console.log("Close detais form!");
   }
 }
