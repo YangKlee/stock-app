@@ -1,0 +1,43 @@
+{
+  "stocks": [
+    {
+      "id": 1,
+      "name": "Test Stock Company",
+      "code": "TSC",
+      "price": "85",
+      "previousPrice": "80",
+      "exchange": "NASDAQ",
+      "favorite": "false"
+    },
+    {
+      "id": 2,
+      "name": "Second Stock Company",
+      "code": "SSC",
+      "price": "10",
+      "previousPrice": "20",
+      "exchange": "NSE",
+      "favorite": "false"
+    },
+    {
+      "id": 3,
+      "name": "Last Stock Company",
+      "code": "LSC",
+      "price": "876",
+      "previousPrice": "765",
+      "exchange": "NYSE",
+      "favorite": "false"
+    },
+    {
+      "name": "Last Stock Company",
+      "code": "LSC",
+      "price": "876",
+      "previousPrice": "765",
+      "exchange": "NYSE",
+      "favorite": "false",
+      "id": 4
+    }    
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
