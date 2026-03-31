@@ -16,7 +16,13 @@ export class HttpServices {
   constructor(private httpClient: HttpClient){}
   public getStock(): Observable<any>
   {
+    console.log(this.httpClient.get<any>(this.URL_STOCK, this.httpOptions));
     return this.httpClient.get<any>(this.URL_STOCK, this.httpOptions);
   }
+  public postStock(body: any): Observable<any>
+  {
+    return this.httpClient.post<any>(this.URL_STOCK,body. this.httpOptions);
+  }
+  }
 
-}
+

@@ -94,7 +94,7 @@ export class CreateStockReactform implements OnInit{
     if(this.createStockForm.valid)
     {
       let noti: String = "";
-      let newStock : Stock = new Stock("", "", 0 , 0, "");
+      let newStock : Stock = new Stock(0,"", "", 0 , 0, "");
       newStock.name = this.createStockForm.value.stockName;
       newStock.code = this.createStockForm.value.stockCode;
       newStock.price = this.createStockForm.value.stockPrice;
@@ -127,7 +127,7 @@ export class CreateStockReactform implements OnInit{
   {
         if(this.createStockForm.valid)
     {
-      let newStock : Stock = new Stock("", "", 0 , 0, "");
+      let newStock : Stock = new Stock(0,"", "", 0 , 0, "");
       newStock.name = this.createStockForm.value.stockName;
       newStock.code = this.createStockForm.value.stockCode;
       newStock.price = this.createStockForm.value.stockPrice;

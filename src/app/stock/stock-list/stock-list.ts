@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 export class StockList implements OnInit {
   isShowDetialDialog :Boolean = false;
   searchKeyword: String = "";
-  stockSelect: Stock = new Stock("", "", 0, 0, "");
+  stockSelect: Stock = new Stock(0,"", "", 0, 0, "");
   public stockList: Array<Stock> = [];  
   constructor(private stockServices:StockService) {
 
@@ -35,7 +35,7 @@ export class StockList implements OnInit {
       if(msg == "")
       {
                 this.isShowDetialDialog = false;
-        this.stockSelect = new Stock("", "", 0, 0, "");
+        this.stockSelect = new Stock(0,"", "", 0, 0, "");
       }
       else
       {

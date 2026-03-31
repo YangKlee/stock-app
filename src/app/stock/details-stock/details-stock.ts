@@ -10,7 +10,7 @@ import { StockService } from '../../services/stock-service';
 export class DetailsStock implements OnInit {
   @Input() StockData!: Stock;
   constructor(public stockServices: StockService){}
-  stockSelect: Stock = new Stock("", "", 0, 0, "");
+  stockSelect: Stock = new Stock(0,"", "", 0, 0, "");
   ngOnInit(): void {
     // đảm bảo load xong html mới đc gán value từ cha
     this.stockSelect = this.StockData;

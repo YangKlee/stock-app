@@ -5,14 +5,16 @@ export class Stock {
     // public price: number = 0;
     // public previousPrice: number = 0;
     public isFavourite: boolean = false;
-    constructor(public name: string, 
+    constructor(
+        public id: number,
+        public name: string, 
         public code: string, 
         public price: number, 
         public previousPrice: number,
         public exchange: string) {
 
     }
-    isIncrease(): boolean
+    public isIncrease(): boolean
     {
         return this.price > this.previousPrice;
     }

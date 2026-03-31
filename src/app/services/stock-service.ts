@@ -7,6 +7,8 @@ import { of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Stock } from '../model/stock';
 import { BehaviorSubject } from 'rxjs';
+import { HttpServices } from "./http-services";
+import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
@@ -14,32 +16,47 @@ export class StockService {
   public stockList: Array<Stock> = [];
   public selectedStockCode = new BehaviorSubject<string>("");
   public modifyStockCode = new BehaviorSubject<string>("");
-  constructor()
+  constructor(private httpServices: HttpServices)
   {
   this.stockList = [
-    new Stock("Hòa Phát Group", "HPG", 28500, 28000, "VNINDEX"),
-    new Stock("Vingroup", "VIC", 72000, 71000, "VNINDEX"),
-    new Stock("Vinamilk", "VNM", 68000, 69000, "VNINDEX"),
-    new Stock("FPT Corporation", "FPT", 95000, 94000, "VNINDEX"),
+    // new Stock(,"Hòa Phát Group", "HPG", 28500, 28000, "VNINDEX"),
+    // new Stock("Vingroup", "VIC", 72000, 71000, "VNINDEX"),
+    // new Stock("Vinamilk", "VNM", 68000, 69000, "VNINDEX"),
+    // new Stock("FPT Corporation", "FPT", 95000, 94000, "VNINDEX"),
 
-    new Stock("Reliance Industries", "RELIANCE", 2500, 2450, "NSE"),
-    new Stock("Tata Consultancy", "TCS", 3600, 3550, "NSE"),
-    new Stock("Infosys", "INFY", 1500, 1480, "NSE"),
+    // new Stock("Reliance Industries", "RELIANCE", 2500, 2450, "NSE"),
+    // new Stock("Tata Consultancy", "TCS", 3600, 3550, "NSE"),
+    // new Stock("Infosys", "INFY", 1500, 1480, "NSE"),
 
-    new Stock("Apple Inc.", "AAPL", 190, 185, "NYSE"),
-    new Stock("Microsoft", "MSFT", 420, 410, "NYSE"),
-    new Stock("Tesla", "TSLA", 210, 205, "NYSE"),
+    // new Stock("Apple Inc.", "AAPL", 190, 185, "NYSE"),
+    // new Stock("Microsoft", "MSFT", 420, 410, "NYSE"),
+    // new Stock("Tesla", "TSLA", 210, 205, "NYSE"),
   ];
   }
   // of = wrap value thành Observable
   // mọi function đều phải trả về dữ liệu dưới dạng bất đồng bộ
   getAllStock() : Observable<Stock[]>
   {
-    return of(this.stockList);
+      return this.httpServices.getStock().pipe(
+        map((rawData: any[]) =>
+          rawData.map((e: any) =>
+            new Stock(
+              e.id,
+              e.name,
+              e.code,
+              e.price,
+              e.previousPrice,
+              e.exchange
+            )
+          )
+        )
+      );
+          
   }
   getStock(code: string): Observable<any>
   {
     let searchStock = this.stockList.find(e => e.code == code);
+
     return of(searchStock);
   }
   // return về code

@@ -4,40 +4,100 @@
       "id": 1,
       "name": "Test Stock Company",
       "code": "TSC",
-      "price": "85",
-      "previousPrice": "80",
+      "price": 85,
+      "previousPrice": 80,
       "exchange": "NASDAQ",
       "favorite": "false"
     },
     {
       "id": 2,
-      "name": "Second Stock Company",
-      "code": "SSC",
-      "price": "10",
-      "previousPrice": "20",
-      "exchange": "NSE",
+      "name": "Apple Inc.",
+      "code": "AAPL",
+      "price": 190,
+      "previousPrice": 185,
+      "exchange": "NASDAQ",
       "favorite": "false"
     },
     {
       "id": 3,
-      "name": "Last Stock Company",
-      "code": "LSC",
-      "price": "876",
-      "previousPrice": "765",
-      "exchange": "NYSE",
+      "name": "Microsoft Corp.",
+      "code": "MSFT",
+      "price": 420,
+      "previousPrice": 410,
+      "exchange": "NASDAQ",
       "favorite": "false"
     },
     {
-      "name": "Last Stock Company",
-      "code": "LSC",
-      "price": "876",
-      "previousPrice": "765",
-      "exchange": "NYSE",
-      "favorite": "false",
-      "id": 4
-    }    
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+      "id": 4,
+      "name": "Tesla Inc.",
+      "code": "TSLA",
+      "price": 210,
+      "previousPrice": 215,
+      "exchange": "NASDAQ",
+      "favorite": "false"
+    },
+    {
+      "id": 5,
+      "name": "Amazon.com Inc.",
+      "code": "AMZN",
+      "price": 145,
+      "previousPrice": 140,
+      "exchange": "NASDAQ",
+      "favorite": "false"
+    },
+    {
+      "id": 6,
+      "name": "Alphabet Inc.",
+      "code": "GOOGL",
+      "price": 135,
+      "previousPrice": 130,
+      "exchange": "NASDAQ",
+      "favorite": "false"
+    },
+    {
+      "id": 7,
+      "name": "Meta Platforms",
+      "code": "META",
+      "price": 300,
+      "previousPrice": 295,
+      "exchange": "NASDAQ",
+      "favorite": "false"
+    },
+    {
+      "id": 8,
+      "name": "Netflix Inc.",
+      "code": "NFLX",
+      "price": 480,
+      "previousPrice": 470,
+      "exchange": "NASDAQ",
+      "favorite": "false"
+    },
+    {
+      "id": 9,
+      "name": "NVIDIA Corp.",
+      "code": "NVDA",
+      "price": 900,
+      "previousPrice": 880,
+      "exchange": "NASDAQ",
+      "favorite": "false"
+    },
+    {
+      "id": 10,
+      "name": "Intel Corp.",
+      "code": "INTC",
+      "price": 45,
+      "previousPrice": 50,
+      "exchange": "NASDAQ",
+      "favorite": "false"
+    },
+    {
+      "id": 11,
+      "name": "AMD Inc.",
+      "code": "AMD",
+      "price": 160,
+      "previousPrice": 155,
+      "exchange": "NASDAQ",
+      "favorite": "false"
+    }
+  ]
 }
