@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 export class StockList implements OnInit {
   isShowDetialDialog :Boolean = false;
   searchKeyword: String = "";
-  stockSelect: Stock = new Stock("", "", 0, 0, "");
+  stockSelect: Stock = new Stock(0,"", "", 0, 0, "");
   public stockList: Array<Stock> = [];  
   constructor(private stockServices:StockService) {
 
@@ -32,10 +32,10 @@ export class StockList implements OnInit {
     this.getStock();
     // this.stockList = this.stockServices.getAllStock();
     this.stockServices.selectedStockCode.subscribe(msg =>{
-      if(msg == "")
+      if(msg == -1)
       {
                 this.isShowDetialDialog = false;
-        this.stockSelect = new Stock("", "", 0, 0, "");
+        this.stockSelect = new Stock(0,"", "", 0, 0, "");
       }
       else
       {
@@ -46,10 +46,17 @@ export class StockList implements OnInit {
         })
       }
     })
+    this.stockServices.isReloadStockData.subscribe((data: Boolean)=>{
+      if(data == true)
+      {
+        this.getStock();
+        this.stockServices.isReloadStockData.next(false);
+      }
+    })
   }
   doSearch()
   {
-    if(this.searchKeyword == "")
+    if(this.searchKeyword == "" || this.searchKeyword==null)
     {
       this.getStock();
     }

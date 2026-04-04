@@ -15,17 +15,15 @@ export class StockItem {
   // nhận stock từ cha là stockList, property đó là có thể được bind từ bên ngoài
   // ! chắc chắn rằng nó không null
   @Input() stock!: Stock;
+  
   isHover: Boolean = false;
   addFavorite(stock: Stock)
   {
-    if(stock.favourite == true)
-      stock.favourite = false;
-    else
-      stock.favourite = true;
+    this.StockServices.toggleFavourite(stock);
   }
   deleteStock(stock: Stock)
   {
-    this.StockServices.deleteStock(stock.code).subscribe(
+    this.StockServices.deleteStock(stock.id).subscribe(
       (success: any) =>
       {
         alert(success.msg);
@@ -35,6 +33,7 @@ export class StockItem {
         alert(err.msg);
       }
     )
+    this.StockServices.isReloadStockData.next(true);
     // if(this.StockServices.deleteStock(stock.code))
     //   alert("Xóa stock thành công");
     // else
@@ -42,10 +41,10 @@ export class StockItem {
   }
   viewDetial(stock: Stock)
   {
-    this.StockServices.selectedStockCode.next(stock.code);
+    this.StockServices.selectedStockCode.next(stock.id);
   }
   modifyStock(stock: Stock)
   {
-    this.StockServices.modifyStockCode.next(stock.code);
+    this.StockServices.modifyStockCode.next(stock.id);
   }
 }
