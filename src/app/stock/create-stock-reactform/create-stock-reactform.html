@@ -1,10 +1,8 @@
-<div class="quick-btn" style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
-    <button type="button" class="btn btn-primary"  (click)="openDialog()">Add stock</button>
-</div>
-<div class="overlay" *ngIf="isFormOpen |async">
+
+<div class="overlay" (click)="closeDialog()" >
 
 </div>
-<div class="create-stock-container" *ngIf="isFormOpen |async">
+<div class="create-stock-container">
     <h1 class="title-form">{{title_form}}</h1>
     <form  class="form-warpper" [formGroup]="createStockForm" (ngSubmit)="submitForm()">
         <div class="input-warpper stock-name-input">

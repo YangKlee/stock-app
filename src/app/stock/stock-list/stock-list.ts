@@ -5,9 +5,10 @@ import { StockItem } from '../stock-item/stock-item';
 import { StockService } from '../../services/stock-service';
 import { DetailsStock } from '../details-stock/details-stock';
 import { FormsModule } from '@angular/forms';
+import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-stock-list',
-  imports: [CommonModule, StockItem, DetailsStock, FormsModule],
+  imports: [RouterOutlet,CommonModule, StockItem, DetailsStock, FormsModule],
   templateUrl: './stock-list.html',
   styleUrls: ['./stock-list.css'],
 })  

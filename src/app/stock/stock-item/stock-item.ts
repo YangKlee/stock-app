@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import {Stock} from '../../model/stock';
 import { StockService } from '../../services/stock-service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-stock-item',
   imports: [CommonModule],
@@ -11,7 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class StockItem {
 
-  constructor(private StockServices: StockService) {}
+  constructor(private StockServices: StockService, private router:Router) {}
   // nhận stock từ cha là stockList, property đó là có thể được bind từ bên ngoài
   // ! chắc chắn rằng nó không null
   @Input() stock!: Stock;
@@ -41,7 +42,7 @@ export class StockItem {
   }
   viewDetial(stock: Stock)
   {
-    this.StockServices.selectedStockCode.next(stock.id);
+    this.router.navigate(["stocklist"]);
   }
   modifyStock(stock: Stock)
   {

@@ -1,0 +1,95 @@
+{
+  "stocks": [
+    {
+      "id": "1",
+      "name": "Test Stock Company",
+      "code": "TSC",
+      "price": 85,
+      "previousPrice": 80,
+      "exchange": "NSE",
+      "favorite": "false"
+    },
+    {
+      "id": "3",
+      "name": "Microsoft",
+      "code": "MSFT",
+      "price": 420,
+      "previousPrice": 410,
+      "exchange": "NSE",
+      "favorite": false
+    },
+    {
+      "id": "5",
+      "name": "Amazon.com",
+      "code": "AMZN",
+      "price": 145,
+      "previousPrice": 140,
+      "exchange": "VNINDEX",
+      "favorite": false
+    },
+    {
+      "id": "6",
+      "name": "Alphabet Inc.",
+      "code": "GOOGL",
+      "price": 135,
+      "previousPrice": 130,
+      "exchange": "NSE",
+      "favorite": "false"
+    },
+    {
+      "id": "7",
+      "name": "Meta Platforms",
+      "code": "META",
+      "price": 300,
+      "previousPrice": 295,
+      "exchange": "NSE",
+      "favorite": "false"
+    },
+    {
+      "id": "8",
+      "name": "Netflix Inc.",
+      "code": "NFLX",
+      "price": 480,
+      "previousPrice": 470,
+      "exchange": "NSE",
+      "favorite": "false"
+    },
+    {
+      "id": "9",
+      "name": "NVIDIA Corp.",
+      "code": "NVDA",
+      "price": 900,
+      "previousPrice": 880,
+      "exchange": "NSE",
+      "favorite": "false"
+    },
+    {
+      "id": "10",
+      "name": "Intel Corp.",
+      "code": "INTC",
+      "price": 45,
+      "previousPrice": 50,
+      "exchange": "NSE",
+      "favorite": "false"
+    },
+    {
+      "id": "11",
+      "name": "AMD Inc.",
+      "code": "AMD",
+      "price": 160,
+      "previousPrice": 155,
+      "exchange": "NSE",
+      "favorite": "false"
+    },
+    {
+      "id": "P-eGUFYO_rI",
+      "name": "RON-95",
+      "code": "RON-95",
+      "price": 39000,
+      "previousPrice": 24000,
+      "exchange": "NSE",
+      "favorite": false
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

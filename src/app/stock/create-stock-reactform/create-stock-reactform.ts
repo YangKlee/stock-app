@@ -7,6 +7,7 @@ import { Stock } from '../../model/stock';;
 import { json } from 'node:stream/consumers';
 import { StockService } from '../../services/stock-service';
 import { BehaviorSubject } from 'rxjs';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-stock-reactform',
@@ -19,7 +20,7 @@ export class CreateStockReactform implements OnInit{
   title_form: string = "";
   createStockForm!: FormGroup;
   isModifyMode: Boolean = false;
-  constructor(private frmBuilder : FormBuilder, private stockService:StockService)
+  constructor(private frmBuilder : FormBuilder, private stockService:StockService, private router:Router)
   {
     // this.createForm();
   }
@@ -41,6 +42,8 @@ export class CreateStockReactform implements OnInit{
         
       }
     })
+    // lười xíu fix sau
+    this.openDialog();
   }
   openDialog()
   {
@@ -174,5 +177,7 @@ export class CreateStockReactform implements OnInit{
       
     }
     this.createStockForm.reset();
+    
+    this.router.navigate(["stocklist"]);
   }
 }
