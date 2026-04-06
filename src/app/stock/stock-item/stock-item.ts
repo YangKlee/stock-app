@@ -48,6 +48,7 @@ export class StockItem {
   }
   modifyStock(stock: Stock)
   {
-    this.StockServices.modifyStockCode.next(stock.id);
+    this.router.navigate(["/stocklist/edit", stock.id]);
+    //this.StockServices.modifyStockCode.next(stock.id);
   }
 }

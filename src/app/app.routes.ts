@@ -12,7 +12,8 @@ export const routes: Routes = [
     children: [
       { path: 'stocklist', component: StockList, children:[
             { path: 'createstock', component: CreateStockReactform },
-            { path: 'chitiet/:id', component: DetailsStock }
+            { path: 'chitiet/:id', component: DetailsStock },
+            {path: "edit/:id", component:CreateStockReactform}
       ]},
 
     ]

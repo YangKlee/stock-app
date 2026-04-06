@@ -6,8 +6,9 @@ import { validate } from '@angular/forms/signals';
 import { Stock } from '../../model/stock';;
 import { json } from 'node:stream/consumers';
 import { StockService } from '../../services/stock-service';
-import { BehaviorSubject } from 'rxjs';
-import { Route, Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Route, Router, ActivatedRoute} from '@angular/router';
+
 
 @Component({
   selector: 'app-create-stock-reactform',
@@ -20,30 +21,45 @@ export class CreateStockReactform implements OnInit{
   title_form: string = "";
   createStockForm!: FormGroup;
   isModifyMode: Boolean = false;
-  constructor(private frmBuilder : FormBuilder, private stockService:StockService, private router:Router)
+  constructor(private frmBuilder : FormBuilder, private stockService:StockService, 
+    private router:Router, private route:ActivatedRoute)
   {
     // this.createForm();
   }
   ngOnInit(): void {
-    this.stockService.modifyStockCode.subscribe(code =>{
-      if(code != -1)
-      {
-        this.title_form="Modify Stock";
-        this.isFormOpen.next(true);
-        this.isModifyMode = true;
-        this.stockService.getStock(code.toString()).subscribe((data: Stock)=>{
-          this.createFormForModify(data)
-        })
-      }
-      else
-      {
-        this.isModifyMode = false;
-        this.title_form= "Create Stock"
+    // this.stockService.modifyStockCode.subscribe(code =>{
+    //   if(code != -1)
+    //   {
+    //     this.title_form="Modify Stock";
+    //     this.isFormOpen.next(true);
+    //     this.isModifyMode = true;
+    //     this.stockService.getStock(code.toString()).subscribe((data: Stock)=>{
+    //       this.createFormForModify(data)
+    //     })
+    //   }
+    //   else
+    //   {
+    //     this.isModifyMode = false;
+    //     this.title_form= "Create Stock"
         
-      }
-    })
-    // lười xíu fix sau
-    this.openDialog();
+    //   }
+    // })
+    // // lười xíu fix sau
+    const idStockEdit = this.route.snapshot.paramMap.get("id");
+    if(idStockEdit)
+    {
+      this.title_form="Modify Stock";
+      this.isModifyMode = true;
+      let stockEdit = new Stock(0, "", "", 0, 0, "");
+      this.createFormForModify(this.stockService.getStock(idStockEdit));
+    }
+    else
+    {
+      this.isModifyMode = false;
+      this.title_form= "Create Stock"
+      this.createForm();
+    }
+    
   }
   openDialog()
   {
@@ -66,8 +82,9 @@ export class CreateStockReactform implements OnInit{
       }
     )
   }
-  createFormForModify(stock : Stock){
-    this.createStockForm = this.frmBuilder.group(
+  createFormForModify(stockOf : Observable<Stock>){
+    stockOf.subscribe(stock=>{
+          this.createStockForm = this.frmBuilder.group(
       {
         stockName: [stock.name, [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
         stockCode: [stock.code, [Validators.required, Validators.minLength(2), Validators.maxLength(6)]],
@@ -79,6 +96,7 @@ export class CreateStockReactform implements OnInit{
   
       }
     )
+    })
   }
   submitForm()
   {
@@ -109,7 +127,7 @@ export class CreateStockReactform implements OnInit{
           console.log("Create complete!");
           noti = result.msg;
           this.createStockForm.reset();
-          this.isFormOpen.next(false);
+          this.router.navigate(["stocklist"]);
           this.stockService.isReloadStockData.next(true);
           
         },
