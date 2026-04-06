@@ -26,7 +26,7 @@ export class CreateStockReactform implements OnInit{
   }
   ngOnInit(): void {
     this.stockService.modifyStockCode.subscribe(code =>{
-      if(code != "")
+      if(code != -1)
       {
         this.title_form="Modify Stock";
         this.isFormOpen.next(true);
@@ -97,7 +97,7 @@ export class CreateStockReactform implements OnInit{
     if(this.createStockForm.valid)
     {
       let noti: String = "";
-      let newStock : Stock = new Stock("", "", 0 , 0, "");
+      let newStock : Stock = new Stock(0,"", "", 0 , 0, "");
       newStock.name = this.createStockForm.value.stockName;
       newStock.code = this.createStockForm.value.stockCode;
       newStock.price = this.createStockForm.value.stockPrice;
@@ -110,6 +110,7 @@ export class CreateStockReactform implements OnInit{
           noti = result.msg;
           this.createStockForm.reset();
           this.isFormOpen.next(false);
+          this.stockService.isReloadStockData.next(true);
           
         },
         (err: any)=>{
@@ -130,17 +131,21 @@ export class CreateStockReactform implements OnInit{
   {
         if(this.createStockForm.valid)
     {
-      let newStock : Stock = new Stock("", "", 0 , 0, "");
+      let newStock : Stock = new Stock(Date.now(),"", "", 0 , 0, "");
       newStock.name = this.createStockForm.value.stockName;
       newStock.code = this.createStockForm.value.stockCode;
       newStock.price = this.createStockForm.value.stockPrice;
       newStock.previousPrice = this.createStockForm.value.stockLastPrice;
       newStock.exchange = this.createStockForm.value.stockExchange;
-      this.stockService.modifyStock(newStock).subscribe(
+      let id: number = -1;
+      this.stockService.modifyStockCode.subscribe((e: number)=> id = e);
+      this.stockService.modifyStock(newStock, id).subscribe(
         (data: any)=>{
           alert(data.msg);
           this.createStockForm.reset();
           this.isFormOpen.next(false);
+          this.stockService.isReloadStockData.next(true);
+          this.stockService.modifyStockCode.next(-1);
         },
         (data: any)=>{
           alert(data.msg);
@@ -168,7 +173,7 @@ export class CreateStockReactform implements OnInit{
     this.isFormOpen.next(false)
     if(this.isModifyMode)
     {
-      this.stockService.modifyStockCode.next("");
+      this.stockService.modifyStockCode.next(-1);
       
     }
     this.createStockForm.reset();
