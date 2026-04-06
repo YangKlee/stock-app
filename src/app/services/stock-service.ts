@@ -83,7 +83,7 @@ export class StockService {
     };
     return this.httpServices.postStock(body);
   }
-  modifyStock(newStock: Stock, id: number): Observable<any>
+  modifyStock(newStock: Stock, id: string): Observable<any>
   {
     const body = {
       "id": newStock.id,

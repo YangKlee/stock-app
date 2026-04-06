@@ -21,6 +21,7 @@ export class CreateStockReactform implements OnInit{
   title_form: string = "";
   createStockForm!: FormGroup;
   isModifyMode: Boolean = false;
+  modifyStockId: string = "";
   constructor(private frmBuilder : FormBuilder, private stockService:StockService, 
     private router:Router, private route:ActivatedRoute)
   {
@@ -45,13 +46,15 @@ export class CreateStockReactform implements OnInit{
     //   }
     // })
     // // lười xíu fix sau
-    const idStockEdit = this.route.snapshot.paramMap.get("id");
-    if(idStockEdit)
+    let tempID = this.route.snapshot.paramMap.get("id");
+    if(tempID)
     {
+      this.modifyStockId = tempID;
       this.title_form="Modify Stock";
       this.isModifyMode = true;
       let stockEdit = new Stock(0, "", "", 0, 0, "");
-      this.createFormForModify(this.stockService.getStock(idStockEdit));
+      
+      this.createFormForModify(this.stockService.getStock(this.modifyStockId  ));
     }
     else
     {
@@ -155,30 +158,18 @@ export class CreateStockReactform implements OnInit{
       newStock.price = this.createStockForm.value.stockPrice;
       newStock.previousPrice = this.createStockForm.value.stockLastPrice;
       newStock.exchange = this.createStockForm.value.stockExchange;
-      let id: number = -1;
-      this.stockService.modifyStockCode.subscribe((e: number)=> id = e);
-      this.stockService.modifyStock(newStock, id).subscribe(
+      //this.stockService.modifyStockCode.subscribe((e: number)=> id = e);
+      this.stockService.modifyStock(newStock, this.modifyStockId).subscribe(
         (data: any)=>{
           alert(data.msg);
           this.createStockForm.reset();
-          this.isFormOpen.next(false);
           this.stockService.isReloadStockData.next(true);
-          this.stockService.modifyStockCode.next(-1);
+          this.router.navigate(['stocklist']);
         },
         (data: any)=>{
           alert(data.msg);
         }
       )
-      // if(this.stockService.modifyStock(newStock.code,newStock))
-      // {
-      //   alert("Sửa stock thành công!");
-      //   this.createStockForm.reset();
-      //   this.isFormOpen.next(false);
-      // }
-      // else
-      // {
-      //   alert("Sửa stock không thành công!");
-      // }
       
     }
     else

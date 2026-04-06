@@ -26,7 +26,7 @@ export class HttpServices {
   public deleteStock(id: number): Observable<any> {
     return this.httpClient.delete<any>(`${this.URL_STOCK}/${id}`, this.httpOptions);
   }
-  public updateStock(id: number, body: any): Observable<any> {
+  public updateStock(id: string, body: any): Observable<any> {
     return this.httpClient.put<any>(`${this.URL_STOCK}/${id}`, body, this.httpOptions);
   }
   public getStockById(id: string)

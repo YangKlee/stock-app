@@ -22,7 +22,7 @@
       "id": "5",
       "name": "Amazon.com",
       "code": "AMZN",
-      "price": 145,
+      "price": 36,
       "previousPrice": 140,
       "exchange": "VNINDEX",
       "favorite": false
@@ -88,6 +88,15 @@
       "price": 39000,
       "previousPrice": 24000,
       "exchange": "NSE",
+      "favorite": false
+    },
+    {
+      "id": "Bry1cesRjP0",
+      "name": "Tày try on",
+      "code": "Tày",
+      "price": 666,
+      "previousPrice": 64,
+      "exchange": "VNINDEX",
       "favorite": false
     }
   ],
