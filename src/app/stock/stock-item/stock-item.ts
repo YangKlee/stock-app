@@ -28,6 +28,8 @@ export class StockItem {
       (success: any) =>
       {
         alert(success.msg);
+        //this.router.navigate(["stocklist"]);
+        this.StockServices.isReloadStockData.next(true);
       },
       (err: any) =>
       {
@@ -42,7 +44,7 @@ export class StockItem {
   }
   viewDetial(stock: Stock)
   {
-    this.router.navigate(["stocklist"]);
+    this.router.navigate(["/stocklist/chitiet", stock.id]);
   }
   modifyStock(stock: Stock)
   {

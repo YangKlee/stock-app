@@ -6,6 +6,8 @@ import { StockService } from '../../services/stock-service';
 import { DetailsStock } from '../details-stock/details-stock';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-stock-list',
   imports: [RouterOutlet,CommonModule, StockItem, DetailsStock, FormsModule],
@@ -16,37 +18,17 @@ export class StockList implements OnInit {
   isShowDetialDialog :Boolean = false;
   searchKeyword: String = "";
   stockSelect: Stock = new Stock(0,"", "", 0, 0, "");
-  public stockList: Array<Stock> = [];  
+  public stockList!: Observable<Stock[]>
   constructor(private stockServices:StockService) {
-
+    //this.stockList.push(new Stock(0,"", "", 0, 0, ""));
 
   }
   getStock()
   {
-        this.stockServices.getAllStock().subscribe(
-      (data)=>{
-        this.stockList = data;
-      }
-    )
+    this.stockList = this.stockServices.getAllStock();
   }
   ngOnInit(): void {
     this.getStock();
-    // this.stockList = this.stockServices.getAllStock();
-    this.stockServices.selectedStockCode.subscribe(msg =>{
-      if(msg == -1)
-      {
-                this.isShowDetialDialog = false;
-        this.stockSelect = new Stock(0,"", "", 0, 0, "");
-      }
-      else
-      {
-        let a = this.stockServices.getStock(msg).subscribe((data:Stock)=>{
-          this.stockSelect = data;
-          this.isShowDetialDialog = true;
-          console.log(this.stockSelect);
-        })
-      }
-    })
     this.stockServices.isReloadStockData.subscribe((data: Boolean)=>{
       if(data == true)
       {
@@ -59,15 +41,23 @@ export class StockList implements OnInit {
   {
     if(this.searchKeyword == "" || this.searchKeyword==null)
     {
-      this.getStock();
+      this.stockList = this.stockServices.getAllStock();
     }
     else
     {
-      this.stockServices.searchStock(this.searchKeyword).subscribe((data: Stock[])=>
-      {
-        this.stockList = data;
-      }
-      )
+      // this.stockServices.searchStock(this.searchKeyword).subscribe((data: Stock[])=>
+      // {
+      //   //this.stockList = data;
+      // }
+      // )
+      this.stockList = this.stockList.pipe(
+        map(list => 
+          list.filter(e =>
+            e.name.toLowerCase().includes(this.searchKeyword.toLowerCase()) ||
+            e.code.toLowerCase().includes(this.searchKeyword.toLowerCase())
+          )
+        )
+      );
     }
     //console.log(this.searchKeyword);
   } 

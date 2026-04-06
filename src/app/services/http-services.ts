@@ -29,7 +29,7 @@ export class HttpServices {
   public updateStock(id: number, body: any): Observable<any> {
     return this.httpClient.put<any>(`${this.URL_STOCK}/${id}`, body, this.httpOptions);
   }
-  public getStockById(id: number)
+  public getStockById(id: string)
   {
     return this.httpClient.get<any>(`${this.URL_STOCK}/${id}`, this.httpOptions);
   }

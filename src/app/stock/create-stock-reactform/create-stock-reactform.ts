@@ -31,7 +31,7 @@ export class CreateStockReactform implements OnInit{
         this.title_form="Modify Stock";
         this.isFormOpen.next(true);
         this.isModifyMode = true;
-        this.stockService.getStock(code).subscribe((data: Stock)=>{
+        this.stockService.getStock(code.toString()).subscribe((data: Stock)=>{
           this.createFormForModify(data)
         })
       }

@@ -7,23 +7,23 @@
         <tbody>
         <tr >
             <th class="table-primary" >Code:</th>
-            <td>{{stockSelect.code}}</td>
+            <td>{{(stockSelect| async)?.code}}</td>
         </tr>
         <tr >
             <th class="table-primary">Namee:</th>
-            <td>{{stockSelect.name}}</td>
+            <td>{{(stockSelect| async)?.name}}</td>
         </tr>
         <tr >
             <th class="table-primary">Previous Price:</th>
-            <td>{{stockSelect.previousPrice}}</td>
+            <td>{{(stockSelect| async)?.previousPrice}}</td>
         </tr>
         <tr >
             <th class="table-primary">Current Price:</th>
-            <td>{{stockSelect.price}}</td>
+            <td>{{(stockSelect| async)?.price}}</td>
         </tr>
         <tr >
             <th class="table-primary">Exchange:</th>
-            <td>{{stockSelect.exchange}}</td>
+            <td>{{(stockSelect| async)?.exchange}}</td>
         </tr>
         </tbody>
     </table>
