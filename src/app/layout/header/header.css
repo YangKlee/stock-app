@@ -101,3 +101,12 @@
 .header-function-button:active {
     transform: translateY(0);
 }
+.active-link{
+    background-color: rgb(255, 255, 255, 0.3);
+}
+li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 10px; /* optional cho dễ click */
+}

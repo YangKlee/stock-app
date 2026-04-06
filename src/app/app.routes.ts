@@ -10,7 +10,8 @@ export const routes: Routes = [
     component: MainLayout,
     children: [
       { path: 'stocklist', component: StockList, children:[
-              { path: 'createstock', component: CreateStockReactform }
+            { path: 'createstock', component: CreateStockReactform },
+            { path: 'detailsstock:id', component: CreateStockReactform }
       ]},
 
     ]
