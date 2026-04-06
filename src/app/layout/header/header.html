@@ -6,12 +6,12 @@
     </div>
     <div class="header-nav-container">
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
+            <li><a [routerLink]="['/stocklist']" >Stock List</a></li>
+            <li><a [routerLink]="['/stocklist/createstock']" >Create Stock</a></li>
         </ul>
     </div>
     </div>
     <div class="header-function-container">
-        <button class="header-function-button">Login</button>
+        <a class="header-function-button" [routerLink]="['/login']" routerLinkActive="router-link-active" >Login</a>
     </div>
 </div>
