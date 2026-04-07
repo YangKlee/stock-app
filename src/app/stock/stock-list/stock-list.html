@@ -1,9 +1,12 @@
-<app-create-stock-reactform (messageEvent)="getFromChild($event)"></app-create-stock-reactform>
-<div class="stock-list-container">
-    <!-- Truyền stockElement từ componet cha sang componet stock items -->
+<div class="container">
+  <app-create-stock-reactform 
+    (messageEvent)="getFromChild($event)">
+  </app-create-stock-reactform>
+
+  <div class="stock-list-container">
     <app-stock-item 
-        *ngFor="let stockElement of stockList"
-        
-        [stock]="stockElement"
-    ></app-stock-item>
+      *ngFor="let stockElement of stockList"
+      [stock]="stockElement">
+    </app-stock-item>
+  </div>
 </div>

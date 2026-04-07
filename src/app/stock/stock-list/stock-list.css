@@ -1,8 +1,19 @@
+.container {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+
+app-create-stock-reactform {
+    width: 300px; 
+}
+
+/* list bên phải */
 .stock-list-container {
-    margin-top: 20px;
+    flex: 1;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: center;
-    box-sizing: border-box;
+    justify-content: flex-start; 
 }
