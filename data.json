@@ -82,20 +82,29 @@
       "favorite": "false"
     },
     {
-      "id": "P-eGUFYO_rI",
-      "name": "RON-95",
-      "code": "RON-95",
-      "price": 39000,
-      "previousPrice": 24000,
-      "exchange": "NSE",
-      "favorite": false
-    },
-    {
       "id": "Bry1cesRjP0",
       "name": "Tày try on",
       "code": "Tày",
       "price": 666,
       "previousPrice": 64,
+      "exchange": "VNINDEX",
+      "favorite": false
+    },
+    {
+      "id": "avFPu8_9Boo",
+      "name": "han sara",
+      "code": "077",
+      "price": 999,
+      "previousPrice": 558,
+      "exchange": "VNINDEX",
+      "favorite": false
+    },
+    {
+      "id": "PEM5E6bhk98",
+      "name": "Inazuma",
+      "code": "Ei",
+      "price": 15000000,
+      "previousPrice": 50,
       "exchange": "VNINDEX",
       "favorite": false
     }

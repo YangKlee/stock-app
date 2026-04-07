@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class HttpServices {
-  private API_SERVER="http://localhost:3000";
+  private API_SERVER="http://172.50.194.33:3000";
   private URL_STOCK=`${this.API_SERVER}/stocks`
   private httpOptions={
     headers: new HttpHeaders({

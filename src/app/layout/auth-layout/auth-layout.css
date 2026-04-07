@@ -2,9 +2,24 @@
 {
     /* create a new formatting context so child margins don't collapse into .main */
     display: flow-root;
-    padding: 10px 10%;
+
 
     background-color: white;
     min-height: 100vh;
     min-width: 100vw;
+}
+.auth-container{
+    display: flex;
+}
+.auth-container img{
+    height: 100vh;
+    width: 1200px;
+}
+.auth-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
 }

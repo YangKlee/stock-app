@@ -5,7 +5,9 @@ import { CreateStockReactform } from './stock/create-stock-reactform/create-stoc
 import { MainLayout } from './layout/main-layout/main-layout';
 import { AuthLayout } from './layout/auth-layout/auth-layout';
 import { DetailsStock } from './stock/details-stock/details-stock';
+import { Regist } from './auth/regist/regist';
 export const routes: Routes = [
+  {path:"home", redirectTo:"stocklist"},
   {
     path: '',
     component: MainLayout,
@@ -22,7 +24,8 @@ export const routes: Routes = [
     path: '',
     component: AuthLayout,
     children: [
-      { path: 'login', component: Login }
+      { path: 'login', component: Login},
+      {path: 'regist', component:Regist}
     ]
   }
 ];

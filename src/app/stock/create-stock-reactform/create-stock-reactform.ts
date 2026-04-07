@@ -105,10 +105,12 @@ export class CreateStockReactform implements OnInit{
   {
     if(!this.isModifyMode)
     {
+      console.log("do create");
       this.createStock()
     }
     else
     {
+      console.log("do modify");
       this.modifyStock();
     }
   }
