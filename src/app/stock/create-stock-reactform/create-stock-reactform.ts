@@ -53,8 +53,7 @@ export class CreateStockReactform implements OnInit{
       this.title_form="Modify Stock";
       this.isModifyMode = true;
       let stockEdit = new Stock(0, "", "", 0, 0, "");
-      
-      this.createFormForModify(this.stockService.getStock(this.modifyStockId  ));
+
     }
     else
     {
