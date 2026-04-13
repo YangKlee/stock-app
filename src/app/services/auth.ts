@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { User } from '../model/user'
-import { Observable, Observer, of, map, throwError } from 'rxjs';
+import { Observable, Observer, of, map, throwError, catchError } from 'rxjs';
 import { HttpServices } from './http-services';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -27,13 +27,13 @@ export class Auth {
             
             console.log("Path token success!!!");
           }, err=>{
-            return throwError("Lỗi thiết lập phiên đăng nhập");
+            return "Lỗi thiết lập phiên đăng nhập";
           })
           return "Đăng nhập thành công";
         }
         else
         {
-          return throwError("Sai tài khoản hoặc mật khẩu");
+          return "Sai tài khoản hoặc mật khẩu";
         }
       })
     )
@@ -82,5 +82,15 @@ export class Auth {
     this.cookieService.delete('auth', '/', 'localhost');
     this.loginedUser = null;
     return of("Đăng xuất thành công");
+  }
+  addUser(user: User): Observable<any>
+  {
+    const body = {
+      "id": crypto.randomUUID(),
+      "username": user.username,
+      "password": user.password,
+      "token": ""
+    }
+    return this.httpServices.addUser(body);
   }
 }

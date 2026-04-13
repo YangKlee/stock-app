@@ -45,6 +45,9 @@
     font-size: 1.4rem;
 
 }
+.input-warper input.ng-invalid.ng-dirty.ng-touched{
+    border-bottom: 2px red solid;
+}
 .input-warper input{
     font-size: 1.5rem;
     border: 0px;

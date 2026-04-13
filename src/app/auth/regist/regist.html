@@ -1,18 +1,30 @@
 <div class="box-item login-container">
-    <form class="login-form" action="">
+    <form class="login-form" action="" [formGroup]="registFrm" (ngSubmit)="doRegist()">
     <h1 class="title-login">Đăng ký</h1>
     <div class="input-container">
     <div class="input-warper username-input">
         <label for="username">Tên đăng nhập:</label>
-        <input id="username" type="text">
+        <input id="username" type="text" formControlName="txtUsername" >
+        <label for=""
+            *ngIf="registFrm.get('txtUsername')?.invalid && registFrm.get('txtUsername')?.dirty"
+            style="color: red;"
+        >Required</label>
     </div>
     <div class="input-warper password-input">
         <label for="password">Mật khẩu:</label>
-        <input id="password" type="password" >
+        <input id="password" type="password" formControlName="txtPassword">
+                <label for=""
+            *ngIf="registFrm.get('txtPassword')?.invalid && registFrm.get('txtPassword')?.dirty"
+            style="color: red;"
+        >Required</label>
     </div>
     <div class="input-warper password-input">
         <label for="password">Nhập lại mật khẩu:</label>
-        <input id="password" type="password" >
+        <input id="password" type="password" formControlName="txtRepassword">
+                <label for=""
+            *ngIf="registFrm.get('txtRepassword')?.invalid && registFrm.get('txtRepassword')?.dirty"
+            style="color: red;"
+        >Required</label>
     </div>
     </div>
     <button type="submit" class="login-button">Đăng ký</button>   

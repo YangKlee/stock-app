@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {User} from '../model/user'
@@ -40,7 +40,10 @@ export class HttpServices {
   }
   public verifyLogin(username: String, password: String): Observable<User[]>
   {
-    return this.httpClient.get<User[]>(`${this.URL_USER}/?username=${username}&password=${password}`, this.httpOptions);
+    const params = new HttpParams()
+      .set('username', username.toString().trim())
+      .set('password', password.toString().trim());
+    return this.httpClient.get<User[]>(this.URL_USER, { headers: this.httpOptions.headers, params: params });
   }
   public addUser(body: any): Observable<any>
   {
@@ -52,8 +55,11 @@ export class HttpServices {
   }
   public getUserByToken(token: String): Observable<User[]>
   {
-    return this.httpClient.get<User[]>(`${this.URL_USER}/?token=${token.toString()}`);
+    const params = new HttpParams().set('token', token.toString());
+    return this.httpClient.get<User[]>(this.URL_USER, { params: params });
+  }
+    public postUser(body: any): Observable<any>
+  {
+    return this.httpClient.post<any>(this.URL_USER,body, this.httpOptions);
   }
 }
-
-

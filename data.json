@@ -1,10 +1,10 @@
 {
   "user": [
     {
-      "id": "1",
-      "username": "admin",
-      "password": "admin",
-      "token": "876219cf-c3ea-481d-9c31-009666cf39da"
+      "id": "RtVAFXjn66U",
+      "username": "YangKlee",
+      "password": "Y@ngKlee18072005",
+      "token": "e323178d-f343-4ed1-832b-d1b61d04845b"
     }
   ],
   "stocks": [
@@ -113,6 +113,15 @@
       "code": "Ei",
       "price": 15000000,
       "previousPrice": 50,
+      "exchange": "VNINDEX",
+      "favorite": false
+    },
+    {
+      "id": "G_iGdMA1yLs",
+      "name": "Tày vl",
+      "code": "23323",
+      "price": 4343,
+      "previousPrice": 3443,
       "exchange": "VNINDEX",
       "favorite": false
     }
