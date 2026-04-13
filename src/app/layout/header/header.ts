@@ -4,9 +4,13 @@ import { Auth } from '../../services/auth';
 import { audit } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { MatIcon } from "@angular/material/icon";
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
 @Component({
   selector: 'app-header',
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, MatIcon, MatButtonModule,MatDividerModule],
   standalone: true,
   templateUrl: './header.html',
   styleUrl: './header.css',

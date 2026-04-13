@@ -118,3 +118,8 @@ li a {
 a {
   text-decoration: none;
 }
+.header-nav-container a{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

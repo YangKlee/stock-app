@@ -15,7 +15,7 @@
       "price": 85,
       "previousPrice": 80,
       "exchange": "NSE",
-      "favorite": false
+      "favorite": true
     },
     {
       "id": "5",
@@ -33,7 +33,7 @@
       "price": 135,
       "previousPrice": 130,
       "exchange": "NSE",
-      "favorite": false
+      "favorite": true
     },
     {
       "id": "7",
@@ -51,7 +51,7 @@
       "price": 480,
       "previousPrice": 470,
       "exchange": "NSE",
-      "favorite": false
+      "favorite": true
     },
     {
       "id": "9",
@@ -69,7 +69,7 @@
       "price": 45,
       "previousPrice": 50,
       "exchange": "NSE",
-      "favorite": true
+      "favorite": false
     },
     {
       "id": "11",
@@ -87,7 +87,16 @@
       "price": 666,
       "previousPrice": 64,
       "exchange": "VNINDEX",
-      "favorite": true
+      "favorite": false
+    },
+    {
+      "id": "T4E7QCBW6H0",
+      "name": "Teststst",
+      "code": "3636",
+      "price": 36,
+      "previousPrice": 22,
+      "exchange": "NSE",
+      "favorite": false
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
