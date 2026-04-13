@@ -12,9 +12,10 @@ import { ChangeDetectorRef } from '@angular/core';
 import {MatTableModule} from '@angular/material/table';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
+import { MatInput } from '@angular/material/input';
 @Component({
   selector: 'app-stock-list',
-  imports: [RouterOutlet,CommonModule, StockItem,FormsModule, MatTableModule, MatButton, MatIcon, MatIconButton],
+  imports: [RouterOutlet,CommonModule, StockItem,FormsModule, MatTableModule, MatButton, MatIcon, MatIconButton, MatInput],
   templateUrl: './stock-list.html',
   styleUrls: ['./stock-list.css'],
 })  

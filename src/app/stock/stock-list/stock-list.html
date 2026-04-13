@@ -1,9 +1,10 @@
 
-<div class="search-stock">
-    <input [(ngModel)]="searchKeyword" (input)="doSearch()"  type="text" placeholder="Nhập mã hoặc tên stock để tìm kiếm...">
-</div>
+
 <div class="stock-list-container">
-    <h2>Stock Favorite</h2>
+    <h2>
+    <mat-icon>star</mat-icon>
+    Stock Favorite
+    </h2>
     <!-- Truyền stockElement từ componet cha sang componet stock items -->
      <div class="stock-favorite">
         <ng-container *ngFor="let stock of stockList | async">
@@ -13,7 +14,20 @@
         </app-stock-item>
         </ng-container>
      </div>
-    <h2>Stock List</h2>
+     <br>
+    <h2>
+        <mat-icon>list_alt</mat-icon>
+        Stock List</h2>
+        
+    <div class="search-stock">
+        <input 
+        matInput 
+        [(ngModel)]="searchKeyword" 
+        (input)="doSearch()" 
+        type="text" 
+        placeholder="Nhập mã hoặc tên stock để tìm kiếm...">
+   </div>
+   <br>
     <table mat-table [dataSource]="(stockList | async) || []" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.

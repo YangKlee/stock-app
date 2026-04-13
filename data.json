@@ -15,7 +15,7 @@
       "price": 85,
       "previousPrice": 80,
       "exchange": "NSE",
-      "favorite": false
+      "favorite": true
     },
     {
       "id": "5",
@@ -69,7 +69,7 @@
       "price": 45,
       "previousPrice": 50,
       "exchange": "NSE",
-      "favorite": false
+      "favorite": true
     },
     {
       "id": "11",
@@ -78,16 +78,7 @@
       "price": 160,
       "previousPrice": 155,
       "exchange": "NSE",
-      "favorite": true
-    },
-    {
-      "id": "Bry1cesRjP0",
-      "name": "Tày try on",
-      "code": "Tày",
-      "price": 666,
-      "previousPrice": 64,
-      "exchange": "VNINDEX",
-      "favorite": true
+      "favorite": false
     },
     {
       "id": "T4E7QCBW6H0",
@@ -96,7 +87,7 @@
       "price": 36,
       "previousPrice": 22,
       "exchange": "NSE",
-      "favorite": false
+      "favorite": true
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
