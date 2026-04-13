@@ -36,7 +36,6 @@ export class StockItem {
         alert(err.msg);
       }
     )
-    this.StockServices.isReloadStockData.next(true);
     // if(this.StockServices.deleteStock(stock.code))
     //   alert("Xóa stock thành công");
     // else

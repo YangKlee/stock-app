@@ -48,7 +48,8 @@ export class StockService {
               e.code,
               e.price,
               e.previousPrice,
-              e.exchange
+              e.exchange,
+              e.favorite
             )
           )
         )
@@ -64,7 +65,8 @@ export class StockService {
         e.code,
         e.price,
         e.previousPrice,
-        e.exchange
+        e.exchange,
+        e.favorite
       ))
     );
   }
@@ -79,7 +81,7 @@ export class StockService {
       "price": newStock.price,
       "previousPrice": newStock.previousPrice,
       "exchange": newStock.exchange,
-      "favorite": newStock.favourite,
+      "favorite": newStock.favorite
     };
     return this.httpServices.postStock(body);
   }
@@ -111,14 +113,21 @@ export class StockService {
   }
   toggleFavourite(stock: Stock)
   {
-    if(stock.isFavourite)
+    
+    if(stock.favorite)
     {
-      this.httpServices.farvoriteStock(stock.id, false);
+      console.log("take false");
+      this.httpServices.farvoriteStock(stock.id.toString(), false).subscribe(() => {
+        this.isReloadStockData.next(true);
+      });
     }
     else
     {
-      this.httpServices.farvoriteStock(stock.id, true);
+      console.log("take true");
+      this.httpServices.farvoriteStock(stock.id.toString(), true).subscribe(() => {
+        this.isReloadStockData.next(true);
+      });
     }
-    this.isReloadStockData.next(true);
+    console.log(stock.favorite);
   }
 }

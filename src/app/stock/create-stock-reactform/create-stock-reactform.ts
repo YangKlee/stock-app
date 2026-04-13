@@ -52,7 +52,7 @@ export class CreateStockReactform implements OnInit{
       this.modifyStockId = tempID;
       this.title_form="Modify Stock";
       this.isModifyMode = true;
-      let stockEdit = new Stock(0, "", "", 0, 0, "");
+      let stockEdit = new Stock(0, "", "", 0, 0, "", false);
 
     }
     else
@@ -119,7 +119,7 @@ export class CreateStockReactform implements OnInit{
     if(this.createStockForm.valid)
     {
       let noti: String = "";
-      let newStock : Stock = new Stock(0,"", "", 0 , 0, "");
+      let newStock : Stock = new Stock(0,"", "", 0 , 0, "", false);
       newStock.name = this.createStockForm.value.stockName;
       newStock.code = this.createStockForm.value.stockCode;
       newStock.price = this.createStockForm.value.stockPrice;
@@ -153,7 +153,7 @@ export class CreateStockReactform implements OnInit{
   {
         if(this.createStockForm.valid)
     {
-      let newStock : Stock = new Stock(Date.now(),"", "", 0 , 0, "");
+      let newStock : Stock = new Stock(Date.now(),"", "", 0 , 0, "", false);
       newStock.name = this.createStockForm.value.stockName;
       newStock.code = this.createStockForm.value.stockCode;
       newStock.price = this.createStockForm.value.stockPrice;

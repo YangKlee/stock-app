@@ -21,7 +21,7 @@ import { MatIcon } from '@angular/material/icon';
 export class StockList implements OnInit {
   isShowDetialDialog :Boolean = false;
   searchKeyword: String = "";
-  stockSelect: Stock = new Stock(0,"", "", 0, 0, "");
+  stockSelect: Stock = new Stock(0,"", "", 0, 0, "", false);
   public stockList!: Observable<Stock[]>
   displayedColumns: string[] = ['code', 'name','price', 'preprice', 'action'];
   constructor(private stockServices:StockService, private cd: ChangeDetectorRef, private router: Router) {
@@ -86,7 +86,6 @@ export class StockList implements OnInit {
         alert(err.msg);
       }
     )
-    this.stockServices.isReloadStockData.next(true);
     // if(this.stockServices.deleteStock(stock.code))
     //   alert("Xóa stock thành công");
     // else
@@ -99,6 +98,7 @@ export class StockList implements OnInit {
   modifyStock(stock: Stock)
   {
     this.router.navigate(["/stocklist/edit", stock.id]);
+    
     //this.stockServices.modifyStockCode.next(stock.id);
   }
 }

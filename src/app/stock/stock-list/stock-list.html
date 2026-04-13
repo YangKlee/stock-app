@@ -3,6 +3,7 @@
     <input [(ngModel)]="searchKeyword" (input)="doSearch()"  type="text" placeholder="Nhập mã hoặc tên stock để tìm kiếm...">
 </div>
 <div class="stock-list-container">
+    <h2>Stock Favorite</h2>
     <!-- Truyền stockElement từ componet cha sang componet stock items -->
      <div class="stock-favorite">
         <app-stock-item 
@@ -12,7 +13,7 @@
             [stock]="stockElement"
         ></app-stock-item>
      </div>
-
+    <h2>Stock List</h2>
     <table mat-table [dataSource]="(stockList | async) || []" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
