@@ -15,7 +15,7 @@
       "price": 85,
       "previousPrice": 80,
       "exchange": "NSE",
-      "favorite": true
+      "favorite": false
     },
     {
       "id": "5",
@@ -33,7 +33,7 @@
       "price": 135,
       "previousPrice": 130,
       "exchange": "NSE",
-      "favorite": true
+      "favorite": false
     },
     {
       "id": "7",
@@ -42,7 +42,7 @@
       "price": 300,
       "previousPrice": 295,
       "exchange": "NSE",
-      "favorite": false
+      "favorite": true
     },
     {
       "id": "8",
@@ -51,7 +51,7 @@
       "price": 480,
       "previousPrice": 470,
       "exchange": "NSE",
-      "favorite": true
+      "favorite": false
     },
     {
       "id": "9",
@@ -78,7 +78,7 @@
       "price": 160,
       "previousPrice": 155,
       "exchange": "NSE",
-      "favorite": false
+      "favorite": true
     },
     {
       "id": "Bry1cesRjP0",
@@ -87,7 +87,7 @@
       "price": 666,
       "previousPrice": 64,
       "exchange": "VNINDEX",
-      "favorite": false
+      "favorite": true
     },
     {
       "id": "T4E7QCBW6H0",

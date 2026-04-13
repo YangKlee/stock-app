@@ -4,50 +4,64 @@
 </div>
 <div class="create-stock-container">
     <h1 class="title-form">{{title_form}}</h1>
-    <form  class="form-warpper" [formGroup]="createStockForm" (ngSubmit)="submitForm()">
-        <div class="input-warpper stock-name-input">
-            <label for="stock-name" class="label-input">Stock Name</label>
-            <input type="text"  formControlName="stockName" class="stock-input stock-name" placeholder="Enter stock name..." >
-            <span  class="error-exception" *ngIf="createStockForm.get('stockName')?.invalid && createStockForm.get('stockName')?.touched
-             " >StockName không hợp lệ </span>
-        </div>
-        <div class="input-warpper stock-code-input" [hidden]="isModifyMode">
-            <label for="stock-code" class="label-input">Stock Code</label>
-            <input type="text" id="stock-code"  formControlName="stockCode" class="stock-input stock-code"  placeholder="Enter stock code..." >
-            <span class="error-exception"  *ngIf="createStockForm.get('stockCode')?.invalid && createStockForm.get('stockCode')?.touched" >StockCode không hợp lệ </span>
-        </div>
-        <div class="input-warpper stock-price-input">
-            <label for="stock-price" class="label-input">Stock Price</label>
-            <input type="number"  formControlName="stockPrice" class="stock-input stock-price" placeholder="Enter stock price..." >
-            <span for="" class="error-exception" *ngIf="createStockForm.get('stockPrice')?.invalid && createStockForm.get('stockPrice')?.touched
-             " >Stock Price không hợp lệ </span>
-        </div>
-        <div class="input-warpper stock-previous-price-input">
-            <label for="stock-previous-price" class="label-input">Stock Previous Price</label>
-            <input type="number" formControlName="stockLastPrice" class="stock-input stock-price" name="stockPreviousPrice" 
-            placeholder="Enter stock previous price..." >
-            <span for="" class="error-exception" *ngIf="createStockForm.get('stockLastPrice')?.invalid && createStockForm.get('stockLastPrice')?.touched
-             " >Stock Last Price không hợp lệ </span>
-        </div>
-        <div class="input-warpper stock-exchange">
-            <label for="">Stock Exchange:</label>
-            <select formControlName="stockExchange">
-                <option value="VNINDEX" selected>VNINDEX</option>
-                <option value="NSE">NSE</option>
-                <option value="NYSE">NYSE</option>
-            </select>
-        </div>
-        <div class="checkbox-warpper" style="display: flex; gap: 10px;">
-            <input type="checkbox" formControlName="isConfimmed" [disabled]="createStockForm.invalid"  class="checkbox-input stock-is-favorite" name="stockIsFavorite">
-            <label for="stock-is-favorite"  class="label-checkbox">I confim that the infomation provided above is accurate!</label>
-        </div>
-        <div class="button-form-warper">
-        <input [disabled]="!createStockForm.get('isConfimmed')?.value || createStockForm.invalid" type="submit" class="btn btn-success" value="Submit">
-        <button type="button"  class="btn btn-danger" (click)="closeDialog()" >Close</button>
+
+    <form class="form-wrapper" [formGroup]="createStockForm" (ngSubmit)="submitForm()" sx="display: flex; flex-direction: column;">
+        
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Stock Name</mat-label>
+            <input matInput formControlName="stockName" placeholder="Enter stock name...">
+            <mat-error *ngIf="createStockForm.get('stockName')?.invalid">
+                Stock Name không hợp lệ
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width" [hidden]="isModifyMode">
+            <mat-label>Stock Code</mat-label>
+            <input matInput formControlName="stockCode" placeholder="Enter stock code...">
+            <mat-error *ngIf="createStockForm.get('stockCode')?.invalid">
+                Stock Code không hợp lệ
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Stock Price</mat-label>
+            <input matInput type="number" formControlName="stockPrice" placeholder="Enter stock price...">
+            <mat-error *ngIf="createStockForm.get('stockPrice')?.invalid">
+                Stock Price không hợp lệ
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Stock Previous Price</mat-label>
+            <input matInput type="number" formControlName="stockLastPrice" placeholder="Enter stock previous price...">
+            <mat-error *ngIf="createStockForm.get('stockLastPrice')?.invalid">
+                Stock Last Price không hợp lệ
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Stock Exchange</mat-label>
+            <mat-select formControlName="stockExchange">
+                <mat-option value="VNINDEX">VNINDEX</mat-option>
+                <mat-option value="NSE">NSE</mat-option>
+                <mat-option value="NYSE">NYSE</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div class="checkbox-wrapper" style="margin-bottom: 20px;">
+            <mat-checkbox formControlName="isConfimmed" [disabled]="createStockForm.invalid">
+                I confirm that the information provided above is accurate!
+            </mat-checkbox>
         </div>
 
+        <div class="button-form-warper" style="display: flex; gap: 10px;">
+            <button mat-raised-button color="primary" type="submit" 
+                [disabled]="!createStockForm.get('isConfimmed')?.value || createStockForm.invalid">
+                Submit
+            </button>
+            <button mat-raised-button color="warn" type="button" (click)="closeDialog()">
+                Close
+            </button>
+        </div>
     </form>
-        <!-- <p>debug</p>
-        <p>{{createStockForm.value | json}}</p>
-        <p>Is form valid: {{createStockForm.valid}}</p> -->
-</div>
+    </div>

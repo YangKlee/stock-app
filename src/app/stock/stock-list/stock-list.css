@@ -50,4 +50,5 @@
     gap: 10px;
     width: 100%;
     overflow-x: scroll;
+    min-height: 150px;
 }

@@ -8,11 +8,18 @@ import { json } from 'node:stream/consumers';
 import { StockService } from '../../services/stock-service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Route, Router, ActivatedRoute} from '@angular/router';
-
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-create-stock-reactform',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, MatButtonModule, MatCheckboxModule, MatSelectModule, MatInputModule
+    , MatFormFieldModule, MatCardModule
+  ],
   templateUrl: './create-stock-reactform.html',
   styleUrl: './create-stock-reactform.css',
 })

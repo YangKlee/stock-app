@@ -6,10 +6,22 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { StockItem } from '../stock-item/stock-item';
 import { Pipe } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
+import { CommonModule } from '@angular/common'; // Cho NgIf, Async Pipe, Decimal Pipe
+import { MatDialogModule } from '@angular/material/dialog'; // Nếu bạn dùng làm Dialog
+import { MatButtonModule } from '@angular/material/button'; // Cho nút đóng (close)
+import { MatIconModule } from '@angular/material/icon'; // Cho biểu thị Favorite và nút X
+import { MatListModule } from '@angular/material/list'; // Cho bố cục danh sách chi tiết
+import { MatDividerModule } from '@angular/material/divider'; // Cho đường kẻ giữa các hàng
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; // Cho hiệu ứng Loading
 @Component({
   selector: 'app-details-stock',
-  imports: [CommonModule],
+  imports: [CommonModule,MatDialogModule,
+    MatButtonModule,
+    MatIconModule,
+    MatListModule,
+    MatDividerModule,
+    MatProgressSpinnerModule],
   templateUrl: './details-stock.html',
   styleUrl: './details-stock.css',
 })
