@@ -1,9 +1,10 @@
 {
   "user":[
     {
+      "uid": 1,
       "username": "admin",
       "password": "admin",
-      "isAdmin": "true"
+      "token": ""
     }
   ],
   "stocks": [

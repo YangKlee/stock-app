@@ -50,6 +50,10 @@ export class HttpServices {
   {
     return this.httpClient.patch<any>(`${this.URL_USER}/${UID}`, {"token": strToken}, this.httpOptions);
   }
+  public getUserByToken(token: String): Observable<User[]>
+  {
+    return this.httpClient.get<User[]>(`${this.URL_USER}/?token=${token}`);
+  }
 }
 
 

@@ -53,3 +53,7 @@
 .input-warper label{
     color: rgba(0, 0, 0, 0.6);
 }   
+
+.input-warper input.ng-invalid.ng-dirty.ng-touched{
+    border-bottom: 2px red solid;
+}
