@@ -1,15 +1,16 @@
-import { Injectable } from '@angular/core';
-import { User } from '../model/user';
-import { CookieService } from 'ngx-cookie-service';
-import { Observable, Observer, of, map } from 'rxjs';
+import { Injectable, inject } from '@angular/core';
+import { User } from '../model/user'
+import { Observable, Observer, of, map, throwError } from 'rxjs';
 import { HttpServices } from './http-services';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Auth {
   public loginedUser: User | null = null;
-  constructor(private cookieService: CookieService, private httpServices: HttpServices){}
+  private cookieService = inject(CookieService);
+  constructor( private httpServices: HttpServices){}
   login(username: String, password: String): Observable<any>
   {
     return this.httpServices.verifyLogin(username, password).pipe(
@@ -22,17 +23,17 @@ export class Auth {
           const token = crypto.randomUUID();
           this.httpServices.pathToken(userLogin.id, token).subscribe(succ=>{
             // set cookies cho token login , sống 1 ngày
-            this.cookieService.set("auth", token, 1);
+            this.cookieService.set("auth", token, 1, '/');
             
             console.log("Path token success!!!");
           }, err=>{
-            return new Error("Lỗi thiết lập phiên đăng nhập");
+            return throwError("Lỗi thiết lập phiên đăng nhập");
           })
           return "Đăng nhập thành công";
         }
         else
         {
-          return new Error("Sai tài khoản hoặc mật khẩu");
+          return throwError("Sai tài khoản hoặc mật khẩu");
         }
       })
     )
@@ -42,7 +43,8 @@ export class Auth {
     {
         // xác minh xem user có lưu cokies đăng nhập k, nếu có tự động login
         // xử lý khi ram vô tình xóa services hoặc người dùng thoát khỏi trang
-      const token = this.cookieService.get("auth");
+      const token = this.cookieService.get('auth');
+      console.log("token", token);
       console.log(`get token: ${token}`)
       if(token == "" || token == null)
       {

@@ -52,7 +52,7 @@ export class HttpServices {
   }
   public getUserByToken(token: String): Observable<User[]>
   {
-    return this.httpClient.get<User[]>(`${this.URL_USER}/?token=${token}`);
+    return this.httpClient.get<User[]>(`${this.URL_USER}/?token=${token.toString()}`);
   }
 }
 
