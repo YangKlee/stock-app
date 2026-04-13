@@ -9,9 +9,10 @@ import { RouterOutlet } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ChangeDetectorRef } from '@angular/core';
+import {MatTableModule} from '@angular/material/table';
 @Component({
   selector: 'app-stock-list',
-  imports: [RouterOutlet,CommonModule, StockItem,FormsModule],
+  imports: [RouterOutlet,CommonModule, StockItem,FormsModule, MatTableModule],
   templateUrl: './stock-list.html',
   styleUrls: ['./stock-list.css'],
 })  
@@ -20,6 +21,7 @@ export class StockList implements OnInit {
   searchKeyword: String = "";
   stockSelect: Stock = new Stock(0,"", "", 0, 0, "");
   public stockList!: Observable<Stock[]>
+  displayedColumns: string[] = ['id', 'name','code', 'price', 'preprice', 'action'];
   constructor(private stockServices:StockService, private cd: ChangeDetectorRef) {
     //this.stockList.push(new Stock(0,"", "", 0, 0, ""));
 
@@ -29,6 +31,7 @@ export class StockList implements OnInit {
     this.stockList = this.stockServices.getAllStock();
   }
   ngOnInit(): void {
+    
     this.getStock();
     this.stockServices.isReloadStockData.subscribe((data: Boolean)=>{
       if(data == true)
