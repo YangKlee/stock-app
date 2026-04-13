@@ -18,15 +18,6 @@
       "favorite": "false"
     },
     {
-      "id": "3",
-      "name": "Microsoft",
-      "code": "MSFT",
-      "price": 420,
-      "previousPrice": 410,
-      "exchange": "NSE",
-      "favorite": false
-    },
-    {
       "id": "5",
       "name": "Amazon.com",
       "code": "AMZN",
@@ -113,15 +104,6 @@
       "code": "Ei",
       "price": 15000000,
       "previousPrice": 50,
-      "exchange": "VNINDEX",
-      "favorite": false
-    },
-    {
-      "id": "G_iGdMA1yLs",
-      "name": "Tày vl",
-      "code": "23323",
-      "price": 4343,
-      "previousPrice": 3443,
       "exchange": "VNINDEX",
       "favorite": false
     }

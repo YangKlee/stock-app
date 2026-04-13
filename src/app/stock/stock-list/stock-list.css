@@ -1,6 +1,6 @@
 .stock-list-container {
     margin-top: 20px;
-    display: flex;
+    display: block;
     flex-wrap: wrap;
     column-gap: 30px;
     row-gap: 20px;
