@@ -8,9 +8,10 @@ import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-stock-list',
-  imports: [RouterOutlet,CommonModule, StockItem, DetailsStock, FormsModule],
+  imports: [RouterOutlet,CommonModule, StockItem,FormsModule],
   templateUrl: './stock-list.html',
   styleUrls: ['./stock-list.css'],
 })  
@@ -19,7 +20,7 @@ export class StockList implements OnInit {
   searchKeyword: String = "";
   stockSelect: Stock = new Stock(0,"", "", 0, 0, "");
   public stockList!: Observable<Stock[]>
-  constructor(private stockServices:StockService) {
+  constructor(private stockServices:StockService, private cd: ChangeDetectorRef) {
     //this.stockList.push(new Stock(0,"", "", 0, 0, ""));
 
   }
@@ -34,6 +35,7 @@ export class StockList implements OnInit {
       {
         this.getStock();
         this.stockServices.isReloadStockData.next(false);
+        this.cd.detectChanges();
       }
     })
   }
