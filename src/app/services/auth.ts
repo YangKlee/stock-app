@@ -20,9 +20,11 @@ export class Auth {
           this.loginedUser = e[0];
           // tạo token cho lần login sau
           const token = crypto.randomUUID();
-          this.httpServices.pathToken(userLogin.UID, token).subscribe(succ=>{
+          this.httpServices.pathToken(userLogin.id, token).subscribe(succ=>{
             // set cookies cho token login , sống 1 ngày
             this.cookieService.set("auth", token, 1);
+            
+            console.log("Path token success!!!");
           }, err=>{
             return new Error("Lỗi thiết lập phiên đăng nhập");
           })
@@ -41,8 +43,10 @@ export class Auth {
         // xác minh xem user có lưu cokies đăng nhập k, nếu có tự động login
         // xử lý khi ram vô tình xóa services hoặc người dùng thoát khỏi trang
       const token = this.cookieService.get("auth");
+      console.log(`get token: ${token}`)
       if(token == "" || token == null)
       {
+        console.log("token tempty");
         // đá về login
         return of(false);
       }
@@ -53,11 +57,13 @@ export class Auth {
           if(e.length > 0) // tồn tại user link với token đó thì ms tiếp tục
           {
             this.loginedUser = e[0];
+            console.log("correct token, continue session");
             return true;
           }
           else
           {
             // đá về login nếu token k hợp lệ
+            console.log("invalid token");
             return false;
           }
         }))

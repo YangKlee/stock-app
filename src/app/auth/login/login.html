@@ -1,5 +1,5 @@
 <div class="box-item login-container">
-    <form [formGroup]="loginFrm" class="login-form" action="" onsubmit="doLogin()" >
+    <form [formGroup]="loginFrm" class="login-form" action="" (ngSubmit)="doLogin()" >
     <h1 class="title-login">Đăng nhập</h1>
     <div class="input-container">
     <div class="input-warper username-input">

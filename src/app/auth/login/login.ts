@@ -20,4 +20,21 @@ export class Login implements OnInit {
       txtPassword: ['', Validators.required]
     });
   }
+  doLogin(){
+    if(this.loginFrm.valid)
+    {
+      const username = this.loginFrm.get('txtUsername')?.value;
+      const password = this.loginFrm.get('txtPassword')?.value;
+      this.authServices.login(username, password).subscribe(succ=>{
+        alert(succ);
+        this.router.navigate(["/stocklist"]);
+      }, err=>{
+        alert(err);
+      })
+    }
+    else
+    {
+      alert("Vui lòng điền đầy đủ các trường thông tin");
+    }
+  }
 }
