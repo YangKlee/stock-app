@@ -78,13 +78,13 @@ export class StockList implements OnInit {
     this.stockServices.deleteStock(stock.id).subscribe(
       (success: any) =>
       {
-        alert(success.msg);
+        alert("Xóa thành công!");
         //this.router.navigate(["stocklist"]);
         this.stockServices.isReloadStockData.next(true);
       },
       (err: any) =>
       {
-        alert(err.msg);
+        alert("Xóa thất bại!");
       }
     )
     // if(this.stockServices.deleteStock(stock.code))

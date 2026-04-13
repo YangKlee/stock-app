@@ -18,15 +18,6 @@
       "favorite": false
     },
     {
-      "id": "5",
-      "name": "Amazon.com",
-      "code": "AMZN",
-      "price": 36,
-      "previousPrice": 140,
-      "exchange": "VNINDEX",
-      "favorite": false
-    },
-    {
       "id": "6",
       "name": "Alphabet Inc.",
       "code": "GOOGL",
@@ -204,7 +195,7 @@
       "price": 170,
       "previousPrice": 175,
       "exchange": "NSE",
-      "favorite": false
+      "favorite": true
     },
     {
       "id": "113",
