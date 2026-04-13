@@ -15,7 +15,7 @@
       "price": 85,
       "previousPrice": 80,
       "exchange": "NSE",
-      "favorite": true
+      "favorite": false
     },
     {
       "id": "5",
@@ -60,7 +60,7 @@
       "price": 900,
       "previousPrice": 880,
       "exchange": "NSE",
-      "favorite": true
+      "favorite": false
     },
     {
       "id": "10",
@@ -69,11 +69,11 @@
       "price": 45,
       "previousPrice": 50,
       "exchange": "NSE",
-      "favorite": false
+      "favorite": true
     },
     {
       "id": "11",
-      "name": "AMD Inc.",
+      "name": "AMD Inc.1",
       "code": "AMD",
       "price": 160,
       "previousPrice": 155,
@@ -87,16 +87,7 @@
       "price": 666,
       "previousPrice": 64,
       "exchange": "VNINDEX",
-      "favorite": false
-    },
-    {
-      "id": "avFPu8_9Boo",
-      "name": "han sara",
-      "code": "077",
-      "price": 999,
-      "previousPrice": 558,
-      "exchange": "VNINDEX",
-      "favorite": false
+      "favorite": true
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

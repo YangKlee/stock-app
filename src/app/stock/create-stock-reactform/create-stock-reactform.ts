@@ -46,13 +46,24 @@ export class CreateStockReactform implements OnInit{
     //   }
     // })
     // // lười xíu fix sau
+    this.createForm();
     let tempID = this.route.snapshot.paramMap.get("id");
     if(tempID)
     {
       this.modifyStockId = tempID;
       this.title_form="Modify Stock";
       this.isModifyMode = true;
-      let stockEdit = new Stock(0, "", "", 0, 0, "", false);
+      this.stockService.getStock(tempID).subscribe(
+        e=>{
+        this.createStockForm.patchValue({
+                stockName: e.name,
+                stockCode: e.code,
+                stockPrice: e.price,
+                stockLastPrice: e.previousPrice,
+                stockExchange: e.exchange
+        });
+      })
+
 
     }
     else
