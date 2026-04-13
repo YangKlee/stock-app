@@ -76,4 +76,11 @@ export class Auth {
       return of(true);
     }
   }
+  logout(): Observable<any>
+  {
+    this.cookieService.delete('auth', '/');
+    this.cookieService.delete('auth', '/', 'localhost');
+    this.loginedUser = null;
+    return of("Đăng xuất thành công");
+  }
 }

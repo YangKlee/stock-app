@@ -12,6 +12,10 @@
     </div>
     </div>
     <div class="header-function-container">
-        <a class="header-function-button" [routerLink]="['/login']">Login</a>
+        <a *ngIf="!isLogin()" class="header-function-button" [routerLink]="['/auth/login']">Login</a>
+        <div class="logout-fn" *ngIf="isLogin()">
+            <label for="">{{getUsername()}}</label>
+            <a class="header-function-button" [routerLink]="['/auth/login']">Logout</a>
+        </div>
     </div>
 </div>

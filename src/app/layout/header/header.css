@@ -110,3 +110,11 @@ li a {
   height: 100%;
   padding: 10px; /* optional cho dễ click */
 }
+.logout-fn{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+a {
+  text-decoration: none;
+}
