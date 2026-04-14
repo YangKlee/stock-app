@@ -102,4 +102,5 @@ export class StockList implements OnInit {
     
     //this.stockServices.modifyStockCode.next(stock.id);
   }
+  
 }

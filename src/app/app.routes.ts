@@ -28,5 +28,6 @@ export const routes: Routes = [
       { path: 'login', component: Login},
       {path: 'regist', component:Regist}
     ]
-  }
+  },
+  {path:"**", redirectTo:"stocklist"}
 ];
