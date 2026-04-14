@@ -5,14 +5,14 @@
     border-radius: 10px;
 
     background-color: white;
-    width: 400px;
+    width: 200px;
 }
 .stock-price{
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     margin: 10px 15px;
 }
 .stock-title{
-    font-size: 30px;
+    font-size: 15px;
     font-weight: bold;
 }
 .stock-start-container
@@ -29,7 +29,7 @@
 .stock-code{
     color: gray;
 
-    font-size: 20px;
+    font-size: 10px;
 }
 .btn-icon{
     border: 0px;
@@ -37,7 +37,7 @@
     color: black;
 }
 .fn-btn{
-    font-size: 20px;
+    font-size: 15px;
     display: flex;
     flex-direction: column;
     position: absolute;

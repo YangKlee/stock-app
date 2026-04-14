@@ -1,15 +1,84 @@
 
-<div class="search-stock">
-    <input [(ngModel)]="searchKeyword" (input)="doSearch()"  type="text" placeholder="Nhập mã hoặc tên stock để tìm kiếm...">
-</div>
-<div class="stock-list-container">
-    <!-- Truyền stockElement từ componet cha sang componet stock items -->
 
-    <app-stock-item 
+<div class="stock-list-container">
+    <h2>
+    <mat-icon>star</mat-icon>
+    Stock Favorite
+    </h2>
+    <!-- Truyền stockElement từ componet cha sang componet stock items -->
+     <div class="stock-favorite">
+        <ng-container *ngFor="let stock of stockList | async">
+        <app-stock-item 
+            *ngIf="stock.favorite"
+            [stock]="stock">
+        </app-stock-item>
+        </ng-container>
+     </div>
+     <br>
+    <h2>
+        <mat-icon>list_alt</mat-icon>
+        Stock List</h2>
         
-        *ngFor="let stockElement of stockList|async" 
-        
-        [stock]="stockElement"
-    ></app-stock-item>
+    <div class="search-stock">
+        <input 
+        matInput 
+        [(ngModel)]="searchKeyword" 
+        (input)="doSearch()" 
+        type="text" 
+        placeholder="Nhập mã hoặc tên stock để tìm kiếm...">
+   </div>
+   <br>
+    <table mat-table [dataSource]="(stockList | async) || []" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="code">
+        <th mat-header-cell *matHeaderCellDef> Code </th>
+        <td class="table-value" [ngStyle]="{'color': element.price >= element.previousPrice ? 'green' : 'red'}" mat-cell *matCellDef="let element"> {{element.code}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td class="table-value" [ngStyle]="{'color': element.price >= element.previousPrice ? 'green' : 'red'}" mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Price </th>
+        <td class="table-value" [ngStyle]="{'color': element.price >= element.previousPrice ? 'green' : 'red'}"  mat-cell *matCellDef="let element"> {{element.price}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="preprice">
+        <th mat-header-cell *matHeaderCellDef> PreviousPrice </th>
+        <td class="table-value" [ngStyle]="{'color': element.price >= element.previousPrice ? 'green' : 'red'}"  mat-cell *matCellDef="let element"> {{element.previousPrice}} </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-icon-button aria-label="Favorite" (click)="addFavorite(element)" >
+                <mat-icon [ngStyle]="{'color': element.favorite ? 'orange' : ''}" >star</mat-icon>
+            </button>
+            <button mat-icon-button aria-label="View Details" (click)="viewDetial(element)">
+                <mat-icon>visibility</mat-icon>
+            </button>
+
+            <button  mat-icon-button aria-label="Edit" (click)="modifyStock(element)">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button aria-label="Delete" (click)="deleteStock(element)">
+                <mat-icon style="color: red;">delete</mat-icon>
+            </button>
+
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+
 </div>
 <router-outlet></router-outlet>

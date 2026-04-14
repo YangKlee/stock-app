@@ -1,25 +1,39 @@
-<div class="box-item login-container">
-    <form [formGroup]="loginFrm" class="login-form" action="" (ngSubmit)="doLogin()" >
+<div class="login-container">
+
+  <form [formGroup]="loginFrm" (ngSubmit)="doLogin()" class="login-form">
+
     <h1 class="title-login">Đăng nhập</h1>
-    <div class="input-container">
-    <div class="input-warper username-input">
-        <label for="username">Tên đăng nhập:</label>
-        <input id="username" type="text" formControlName="txtUsername">
-        <label for=""
-            *ngIf="loginFrm.get('txtUsername')?.invalid && loginFrm.get('txtUsername')?.dirty"
-            style="color: red;"
-        >Required</label>
-    </div>
-    <div class="input-warper password-input">
-        <label for="password">Mật khẩu:</label>
-        <input id="password" type="password" formControlName="txtPassword" >
-        <label for=""
-            *ngIf="loginFrm.get('txtPassword')?.invalid && loginFrm.get('txtPassword')?.dirty"
-            style="color: red;"
-        >Required</label>
-    </div>
-    </div>
-    <button type="submit" class="login-button">Đăng nhập</button>
-    <a href="/auth/regist" class="btn btn-primary"> Đăng ký</a>  
-</form>
+
+    <!-- Username -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Tên đăng nhập</mat-label>
+      <input matInput formControlName="txtUsername" />
+
+      <mat-error *ngIf="loginFrm.get('txtUsername')?.hasError('required')">
+        Required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Password -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Mật khẩu</mat-label>
+      <input matInput type="password" formControlName="txtPassword" />
+
+      <mat-error *ngIf="loginFrm.get('txtPassword')?.hasError('required')">
+        Required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Button -->
+    <button  mat-flat-button color="accent" type="submit">
+        <mat-icon>login</mat-icon>
+        Đăng nhập
+    </button>
+
+    <button mat-button routerLink="/auth/regist" type="button">
+      Đăng ký
+    </button>
+
+  </form>
+
 </div>

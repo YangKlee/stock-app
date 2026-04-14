@@ -8,11 +8,18 @@ import { json } from 'node:stream/consumers';
 import { StockService } from '../../services/stock-service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Route, Router, ActivatedRoute} from '@angular/router';
-
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-create-stock-reactform',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, MatButtonModule, MatCheckboxModule, MatSelectModule, MatInputModule
+    , MatFormFieldModule, MatCardModule
+  ],
   templateUrl: './create-stock-reactform.html',
   styleUrl: './create-stock-reactform.css',
 })
@@ -28,31 +35,25 @@ export class CreateStockReactform implements OnInit{
     // this.createForm();
   }
   ngOnInit(): void {
-    // this.stockService.modifyStockCode.subscribe(code =>{
-    //   if(code != -1)
-    //   {
-    //     this.title_form="Modify Stock";
-    //     this.isFormOpen.next(true);
-    //     this.isModifyMode = true;
-    //     this.stockService.getStock(code.toString()).subscribe((data: Stock)=>{
-    //       this.createFormForModify(data)
-    //     })
-    //   }
-    //   else
-    //   {
-    //     this.isModifyMode = false;
-    //     this.title_form= "Create Stock"
-        
-    //   }
-    // })
-    // // lười xíu fix sau
+ 
+    this.createForm();
     let tempID = this.route.snapshot.paramMap.get("id");
     if(tempID)
     {
       this.modifyStockId = tempID;
       this.title_form="Modify Stock";
       this.isModifyMode = true;
-      let stockEdit = new Stock(0, "", "", 0, 0, "");
+      this.stockService.getStock(tempID).subscribe(
+        e=>{
+        this.createStockForm.patchValue({
+                stockName: e.name,
+                stockCode: e.code,
+                stockPrice: e.price,
+                stockLastPrice: e.previousPrice,
+                stockExchange: e.exchange
+        });
+      })
+
 
     }
     else
@@ -84,22 +85,7 @@ export class CreateStockReactform implements OnInit{
       }
     )
   }
-  createFormForModify(stockOf : Observable<Stock>){
-    stockOf.subscribe(stock=>{
-          this.createStockForm = this.frmBuilder.group(
-      {
-        stockName: [stock.name, [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
-        stockCode: [stock.code, [Validators.required, Validators.minLength(2), Validators.maxLength(6)]],
-        stockPrice: [stock.price, [Validators.required, Validators.min(0)]],
-        stockLastPrice: [stock.previousPrice, [Validators.required, Validators.min(0)]],
-        stockExchange: [stock.exchange, [Validators.required]],
-        stockSubmit: ["Modify Stock", null],
-        isConfimmed: [false, null]    
-  
-      }
-    )
-    })
-  }
+
   submitForm()
   {
     if(!this.isModifyMode)
@@ -119,7 +105,7 @@ export class CreateStockReactform implements OnInit{
     if(this.createStockForm.valid)
     {
       let noti: String = "";
-      let newStock : Stock = new Stock(0,"", "", 0 , 0, "");
+      let newStock : Stock = new Stock(0,"", "", 0 , 0, "", false);
       newStock.name = this.createStockForm.value.stockName;
       newStock.code = this.createStockForm.value.stockCode;
       newStock.price = this.createStockForm.value.stockPrice;
@@ -129,7 +115,8 @@ export class CreateStockReactform implements OnInit{
         // hàm trả về khi hàm api được chạy thành công, k lỗi
         (result:any)=>{
           console.log("Create complete!");
-          noti = result.msg;
+          //noti = result.msg;
+          alert("Tạo stock thành công!");
           this.createStockForm.reset();
           this.router.navigate(["stocklist"]);
           this.stockService.isReloadStockData.next(true);
@@ -137,12 +124,13 @@ export class CreateStockReactform implements OnInit{
         },
         (err: any)=>{
           console.log("Error ");
-          noti = err.msg;
+          //noti = err.msg;
+          alert("Tạo sock thất bại")
         }
       
       )
 
-      alert(noti);
+      //alert(noti);
     }
     else{
       alert("Có trường không hợp lệ!");
@@ -153,7 +141,7 @@ export class CreateStockReactform implements OnInit{
   {
         if(this.createStockForm.valid)
     {
-      let newStock : Stock = new Stock(Date.now(),"", "", 0 , 0, "");
+      let newStock : Stock = new Stock(Date.now(),"", "", 0 , 0, "", false);
       newStock.name = this.createStockForm.value.stockName;
       newStock.code = this.createStockForm.value.stockCode;
       newStock.price = this.createStockForm.value.stockPrice;
@@ -162,13 +150,13 @@ export class CreateStockReactform implements OnInit{
       //this.stockService.modifyStockCode.subscribe((e: number)=> id = e);
       this.stockService.modifyStock(newStock, this.modifyStockId).subscribe(
         (data: any)=>{
-          alert(data.msg);
+          alert("Sửa stock thành công!");
           this.createStockForm.reset();
           this.stockService.isReloadStockData.next(true);
           this.router.navigate(['stocklist']);
         },
         (data: any)=>{
-          alert(data.msg);
+          alert("Sửa stock thất bại!");
         }
       )
       

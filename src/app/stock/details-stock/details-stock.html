@@ -12,7 +12,7 @@
         <tr >
             <th class="table-primary">Namee:</th>
             <td>{{(stockSelect| async)?.name}}</td>
-        </tr>
+        </tr>       
         <tr >
             <th class="table-primary">Previous Price:</th>
             <td>{{(stockSelect| async)?.previousPrice}}</td>
@@ -24,6 +24,10 @@
         <tr >
             <th class="table-primary">Exchange:</th>
             <td>{{(stockSelect| async)?.exchange}}</td>
+        </tr>
+                <tr >
+            <th class="table-primary">Favorite:</th>
+            <td>{{(stockSelect| async)?.favorite}}</td>
         </tr>
         </tbody>
     </table>

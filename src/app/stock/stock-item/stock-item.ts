@@ -27,16 +27,15 @@ export class StockItem {
     this.StockServices.deleteStock(stock.id).subscribe(
       (success: any) =>
       {
-        alert(success.msg);
+        alert("Xóa thành công!");
         //this.router.navigate(["stocklist"]);
         this.StockServices.isReloadStockData.next(true);
       },
       (err: any) =>
       {
-        alert(err.msg);
+        alert("Xóa thất bại!");
       }
     )
-    this.StockServices.isReloadStockData.next(true);
     // if(this.StockServices.deleteStock(stock.code))
     //   alert("Xóa stock thành công");
     // else

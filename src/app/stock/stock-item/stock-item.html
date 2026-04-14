@@ -1,5 +1,5 @@
 
-<div class="stock-item-container" (mouseenter)="isHover = true" (mouseleave)="isHover = false" >
+<div class="stock-item-container"  (mouseenter)="isHover = true" (mouseleave)="isHover = false" >
     <h2 class="stock-title">{{stock.name}}</h2>
     <h3 class="stock-code">({{stock.code}})</h3>
     <span class="stock-start-container"
@@ -22,8 +22,8 @@
         <button class="btn-icon" (click)="addFavorite(stock)" >
             <i style="color: orange;" class="bi "
             
-            [class.bi-star] = "!stock.favourite"
-            [class.bi-star-fill] = "stock.favourite"
+            [class.bi-star] = "!stock.favorite"
+            [class.bi-star-fill] = "stock.favorite"
             ></i>
         </button>
 

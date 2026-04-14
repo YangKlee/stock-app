@@ -6,8 +6,8 @@
     </div>
     <div class="header-nav-container">
         <ul>
-            <li><a [routerLink]="['/stocklist']" routerLinkActive="active-link"  [routerLinkActiveOptions]="{ exact: true }" >Stock List</a></li>
-            <li><a [routerLink]="['/stocklist/createstock']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" >Create Stock</a></li>
+            <li><a [routerLink]="['/stocklist']" routerLinkActive="active-link"  [routerLinkActiveOptions]="{ exact: true }" ><mat-icon>list</mat-icon>Stock List</a></li>
+            <li><a [routerLink]="['/stocklist/createstock']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" ><mat-icon>create</mat-icon>Create Stock</a></li>
         </ul>
     </div>
     </div>
@@ -15,7 +15,10 @@
         <a *ngIf="!isLogin()" class="header-function-button" [routerLink]="['/auth/login']">Login</a>
         <div class="logout-fn" *ngIf="isLogin()">
             <label for="">{{getUsername()}}</label>
-            <a class="header-function-button" [routerLink]="['/auth/login']">Logout</a>
+                  <button matFab extended routerLink="." routerLink="/auth/login">
+                <mat-icon>logout</mat-icon>
+                Đăng xuất
+                  </button>
         </div>
     </div>
 </div>

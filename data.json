@@ -2,9 +2,9 @@
   "user": [
     {
       "id": "RtVAFXjn66U",
-      "username": "YangKlee",
-      "password": "Y@ngKlee18072005",
-      "token": "e323178d-f343-4ed1-832b-d1b61d04845b"
+      "username": "admin",
+      "password": "admin",
+      "token": "dfb701ff-ef92-4d49-a5e0-96d2efe0fed4"
     }
   ],
   "stocks": [
@@ -15,25 +15,7 @@
       "price": 85,
       "previousPrice": 80,
       "exchange": "NSE",
-      "favorite": "false"
-    },
-    {
-      "id": "3",
-      "name": "Microsoft",
-      "code": "MSFT",
-      "price": 420,
-      "previousPrice": 410,
-      "exchange": "NSE",
-      "favorite": false
-    },
-    {
-      "id": "5",
-      "name": "Amazon.com",
-      "code": "AMZN",
-      "price": 36,
-      "previousPrice": 140,
-      "exchange": "VNINDEX",
-      "favorite": false
+      "favorite": true
     },
     {
       "id": "6",
@@ -42,7 +24,7 @@
       "price": 135,
       "previousPrice": 130,
       "exchange": "NSE",
-      "favorite": "false"
+      "favorite": true
     },
     {
       "id": "7",
@@ -51,7 +33,7 @@
       "price": 300,
       "previousPrice": 295,
       "exchange": "NSE",
-      "favorite": "false"
+      "favorite": true
     },
     {
       "id": "8",
@@ -60,7 +42,7 @@
       "price": 480,
       "previousPrice": 470,
       "exchange": "NSE",
-      "favorite": "false"
+      "favorite": false
     },
     {
       "id": "9",
@@ -69,7 +51,7 @@
       "price": 900,
       "previousPrice": 880,
       "exchange": "NSE",
-      "favorite": "false"
+      "favorite": false
     },
     {
       "id": "10",
@@ -78,51 +60,195 @@
       "price": 45,
       "previousPrice": 50,
       "exchange": "NSE",
-      "favorite": "false"
+      "favorite": false
     },
     {
-      "id": "11",
-      "name": "AMD Inc.",
-      "code": "AMD",
-      "price": 160,
-      "previousPrice": 155,
+      "id": "T4E7QCBW6H0",
+      "name": "Teststst",
+      "code": "3636",
+      "price": 36,
+      "previousPrice": 22,
       "exchange": "NSE",
-      "favorite": "false"
-    },
-    {
-      "id": "Bry1cesRjP0",
-      "name": "Tày try on",
-      "code": "Tày",
-      "price": 666,
-      "previousPrice": 64,
-      "exchange": "VNINDEX",
       "favorite": false
     },
     {
-      "id": "avFPu8_9Boo",
-      "name": "han sara",
-      "code": "077",
-      "price": 999,
-      "previousPrice": 558,
-      "exchange": "VNINDEX",
+      "id": "100",
+      "name": "Apple Inc.",
+      "code": "AAPL",
+      "price": 175,
+      "previousPrice": 170,
+      "exchange": "NSE",
       "favorite": false
     },
     {
-      "id": "PEM5E6bhk98",
-      "name": "Inazuma",
-      "code": "Ei",
-      "price": 15000000,
-      "previousPrice": 50,
-      "exchange": "VNINDEX",
+      "id": "101",
+      "name": "Microsoft Corp.",
+      "code": "MSFT",
+      "price": 420,
+      "previousPrice": 415,
+      "exchange": "NSE",
       "favorite": false
     },
     {
-      "id": "G_iGdMA1yLs",
-      "name": "Tày vl",
-      "code": "23323",
-      "price": 4343,
-      "previousPrice": 3443,
-      "exchange": "VNINDEX",
+      "id": "102",
+      "name": "Tesla Inc.",
+      "code": "TSLA",
+      "price": 180,
+      "previousPrice": 185,
+      "exchange": "NSE",
+      "favorite": false
+    },
+    {
+      "id": "103",
+      "name": "Berkshire Hathaway",
+      "code": "BRK.B",
+      "price": 410,
+      "previousPrice": 408,
+      "exchange": "NSE",
+      "favorite": false
+    },
+    {
+      "id": "104",
+      "name": "Visa Inc.",
+      "code": "V",
+      "price": 280,
+      "previousPrice": 275,
+      "exchange": "NSE",
+      "favorite": false
+    },
+    {
+      "id": "105",
+      "name": "JPMorgan Chase",
+      "code": "JPM",
+      "price": 195,
+      "previousPrice": 190,
+      "exchange": "NSE",
+      "favorite": false
+    },
+    {
+      "id": "106",
+      "name": "Johnson & Johnson",
+      "code": "JNJ",
+      "price": 155,
+      "previousPrice": 158,
+      "exchange": "NSE",
+      "favorite": false
+    },
+    {
+      "id": "107",
+      "name": "Walmart Inc.",
+      "code": "WMT",
+      "price": 60,
+      "previousPrice": 58,
+      "exchange": "NSE",
+      "favorite": false
+    },
+    {
+      "id": "108",
+      "name": "Mastercard Inc.",
+      "code": "MA",
+      "price": 460,
+      "previousPrice": 455,
+      "exchange": "NSE",
+      "favorite": false
+    },
+    {
+      "id": "109",
+      "name": "Procter & Gamble",
+      "code": "PG",
+      "price": 160,
+      "previousPrice": 162,
+      "exchange": "NSE",
+      "favorite": false
+    },
+    {
+      "id": "110",
+      "name": "Exxon Mobil Corp.",
+      "code": "XOM",
+      "price": 120,
+      "previousPrice": 118,
+      "exchange": "NSE",
+      "favorite": false
+    },
+    {
+      "id": "111",
+      "name": "Coca-Cola Co.",
+      "code": "KO",
+      "price": 62,
+      "previousPrice": 60,
+      "exchange": "NSE",
+      "favorite": false
+    },
+    {
+      "id": "112",
+      "name": "PepsiCo Inc.",
+      "code": "PEP",
+      "price": 170,
+      "previousPrice": 175,
+      "exchange": "NSE",
+      "favorite": false
+    },
+    {
+      "id": "113",
+      "name": "Adobe Inc.",
+      "code": "ADBE",
+      "price": 500,
+      "previousPrice": 510,
+      "exchange": "NSE",
+      "favorite": false
+    },
+    {
+      "id": "114",
+      "name": "Oracle Corp.",
+      "code": "ORCL",
+      "price": 125,
+      "previousPrice": 120,
+      "exchange": "NSE",
+      "favorite": false
+    },
+    {
+      "id": "115",
+      "name": "Salesforce Inc.",
+      "code": "CRM",
+      "price": 305,
+      "previousPrice": 298,
+      "exchange": "NSE",
+      "favorite": false
+    },
+    {
+      "id": "116",
+      "name": "Chevron Corp.",
+      "code": "CVX",
+      "price": 160,
+      "previousPrice": 158,
+      "exchange": "NSE",
+      "favorite": false
+    },
+    {
+      "id": "117",
+      "name": "Home Depot Inc.",
+      "code": "HD",
+      "price": 345,
+      "previousPrice": 340,
+      "exchange": "NSE",
+      "favorite": false
+    },
+    {
+      "id": "118",
+      "name": "Walt Disney Co.",
+      "code": "DIS",
+      "price": 115,
+      "previousPrice": 110,
+      "exchange": "NSE",
+      "favorite": false
+    },
+    {
+      "id": "119",
+      "name": "Pfizer Inc.",
+      "code": "PFE",
+      "price": 28,
+      "previousPrice": 30,
+      "exchange": "NSE",
       "favorite": false
     }
   ],
